@@ -1,128 +1,87 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  
-
-  
-  <title>在 AWS 中国区方便安全的使用海外公开容器镜像 | Hexo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="参考资料：  在 AWS 中国区方便安全的使用海外公开容器镜像 - AWS Team - 亚马逊AWS官方博客  Step 1 申请海外云服务器此处使用的是 AWS-EC2- us-east-2 -Ubuntu 18.04。 12apt updateapt upgrade    Step 2 安装Node.js这部分内容参考 Ubuntu 18.04 安装 Node.js Step 3 安装 AW">
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon-16x16.png?v=2.3.0" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon-32x32.png?v=2.3.0" type="image/png" sizes="32x32"><meta name="description" content="参考资料：  在 AWS 中国区方便安全的使用海外公开容器镜像 - AWS Team - 亚马逊AWS官方博客                      Step 1 申请海外云服务器       此处使用的是 AWS-EC2- us-east-2 -Ubuntu 18.04。 12apt updateapt upgrade                        Step 2 安装Node">
 <meta property="og:type" content="article">
 <meta property="og:title" content="在 AWS 中国区方便安全的使用海外公开容器镜像">
-<meta property="og:url" content="http://example.com/2020/11/14/%E5%9C%A8-AWS-%E4%B8%AD%E5%9B%BD%E5%8C%BA%E6%96%B9%E4%BE%BF%E5%AE%89%E5%85%A8%E7%9A%84%E4%BD%BF%E7%94%A8%E6%B5%B7%E5%A4%96%E5%85%AC%E5%BC%80%E5%AE%B9%E5%99%A8%E9%95%9C%E5%83%8F/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="参考资料：  在 AWS 中国区方便安全的使用海外公开容器镜像 - AWS Team - 亚马逊AWS官方博客  Step 1 申请海外云服务器此处使用的是 AWS-EC2- us-east-2 -Ubuntu 18.04。 12apt updateapt upgrade    Step 2 安装Node.js这部分内容参考 Ubuntu 18.04 安装 Node.js Step 3 安装 AW">
+<meta property="og:url" content="https://hello-liuyang.com/2020/11/14/%E5%9C%A8-AWS-%E4%B8%AD%E5%9B%BD%E5%8C%BA%E6%96%B9%E4%BE%BF%E5%AE%89%E5%85%A8%E7%9A%84%E4%BD%BF%E7%94%A8%E6%B5%B7%E5%A4%96%E5%85%AC%E5%BC%80%E5%AE%B9%E5%99%A8%E9%95%9C%E5%83%8F/index.html">
+<meta property="og:site_name" content="Hello, Stranger">
+<meta property="og:description" content="参考资料：  在 AWS 中国区方便安全的使用海外公开容器镜像 - AWS Team - 亚马逊AWS官方博客                      Step 1 申请海外云服务器       此处使用的是 AWS-EC2- us-east-2 -Ubuntu 18.04。 12apt updateapt upgrade                        Step 2 安装Node">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/2020/11/14/%E5%9C%A8-AWS-%E4%B8%AD%E5%9B%BD%E5%8C%BA%E6%96%B9%E4%BE%BF%E5%AE%89%E5%85%A8%E7%9A%84%E4%BD%BF%E7%94%A8%E6%B5%B7%E5%A4%96%E5%85%AC%E5%BC%80%E5%AE%B9%E5%99%A8%E9%95%9C%E5%83%8F/001.png">
-<meta property="og:image" content="http://example.com/2020/11/14/%E5%9C%A8-AWS-%E4%B8%AD%E5%9B%BD%E5%8C%BA%E6%96%B9%E4%BE%BF%E5%AE%89%E5%85%A8%E7%9A%84%E4%BD%BF%E7%94%A8%E6%B5%B7%E5%A4%96%E5%85%AC%E5%BC%80%E5%AE%B9%E5%99%A8%E9%95%9C%E5%83%8F/002.png">
-<meta property="og:image" content="http://example.com/2020/11/14/%E5%9C%A8-AWS-%E4%B8%AD%E5%9B%BD%E5%8C%BA%E6%96%B9%E4%BE%BF%E5%AE%89%E5%85%A8%E7%9A%84%E4%BD%BF%E7%94%A8%E6%B5%B7%E5%A4%96%E5%85%AC%E5%BC%80%E5%AE%B9%E5%99%A8%E9%95%9C%E5%83%8F/003.png">
-<meta property="og:image" content="http://example.com/2020/11/14/%E5%9C%A8-AWS-%E4%B8%AD%E5%9B%BD%E5%8C%BA%E6%96%B9%E4%BE%BF%E5%AE%89%E5%85%A8%E7%9A%84%E4%BD%BF%E7%94%A8%E6%B5%B7%E5%A4%96%E5%85%AC%E5%BC%80%E5%AE%B9%E5%99%A8%E9%95%9C%E5%83%8F/004.png">
-<meta property="og:image" content="http://example.com/2020/11/14/%E5%9C%A8-AWS-%E4%B8%AD%E5%9B%BD%E5%8C%BA%E6%96%B9%E4%BE%BF%E5%AE%89%E5%85%A8%E7%9A%84%E4%BD%BF%E7%94%A8%E6%B5%B7%E5%A4%96%E5%85%AC%E5%BC%80%E5%AE%B9%E5%99%A8%E9%95%9C%E5%83%8F/005.png">
-<meta property="og:image" content="http://example.com/2020/11/14/%E5%9C%A8-AWS-%E4%B8%AD%E5%9B%BD%E5%8C%BA%E6%96%B9%E4%BE%BF%E5%AE%89%E5%85%A8%E7%9A%84%E4%BD%BF%E7%94%A8%E6%B5%B7%E5%A4%96%E5%85%AC%E5%BC%80%E5%AE%B9%E5%99%A8%E9%95%9C%E5%83%8F/006.png">
-<meta property="og:image" content="http://example.com/2020/11/14/%E5%9C%A8-AWS-%E4%B8%AD%E5%9B%BD%E5%8C%BA%E6%96%B9%E4%BE%BF%E5%AE%89%E5%85%A8%E7%9A%84%E4%BD%BF%E7%94%A8%E6%B5%B7%E5%A4%96%E5%85%AC%E5%BC%80%E5%AE%B9%E5%99%A8%E9%95%9C%E5%83%8F/007.png">
-<meta property="og:image" content="http://example.com/2020/11/14/%E5%9C%A8-AWS-%E4%B8%AD%E5%9B%BD%E5%8C%BA%E6%96%B9%E4%BE%BF%E5%AE%89%E5%85%A8%E7%9A%84%E4%BD%BF%E7%94%A8%E6%B5%B7%E5%A4%96%E5%85%AC%E5%BC%80%E5%AE%B9%E5%99%A8%E9%95%9C%E5%83%8F/008.png">
-<meta property="og:image" content="http://example.com/2020/11/14/%E5%9C%A8-AWS-%E4%B8%AD%E5%9B%BD%E5%8C%BA%E6%96%B9%E4%BE%BF%E5%AE%89%E5%85%A8%E7%9A%84%E4%BD%BF%E7%94%A8%E6%B5%B7%E5%A4%96%E5%85%AC%E5%BC%80%E5%AE%B9%E5%99%A8%E9%95%9C%E5%83%8F/009.png">
-<meta property="og:image" content="http://example.com/2020/11/14/%E5%9C%A8-AWS-%E4%B8%AD%E5%9B%BD%E5%8C%BA%E6%96%B9%E4%BE%BF%E5%AE%89%E5%85%A8%E7%9A%84%E4%BD%BF%E7%94%A8%E6%B5%B7%E5%A4%96%E5%85%AC%E5%BC%80%E5%AE%B9%E5%99%A8%E9%95%9C%E5%83%8F/010.png">
-<meta property="og:image" content="http://example.com/2020/11/14/%E5%9C%A8-AWS-%E4%B8%AD%E5%9B%BD%E5%8C%BA%E6%96%B9%E4%BE%BF%E5%AE%89%E5%85%A8%E7%9A%84%E4%BD%BF%E7%94%A8%E6%B5%B7%E5%A4%96%E5%85%AC%E5%BC%80%E5%AE%B9%E5%99%A8%E9%95%9C%E5%83%8F/011.png">
+<meta property="og:image" content="https://hello-liuyang.com/2020/11/14/%E5%9C%A8-AWS-%E4%B8%AD%E5%9B%BD%E5%8C%BA%E6%96%B9%E4%BE%BF%E5%AE%89%E5%85%A8%E7%9A%84%E4%BD%BF%E7%94%A8%E6%B5%B7%E5%A4%96%E5%85%AC%E5%BC%80%E5%AE%B9%E5%99%A8%E9%95%9C%E5%83%8F/001.png">
+<meta property="og:image" content="https://hello-liuyang.com/2020/11/14/%E5%9C%A8-AWS-%E4%B8%AD%E5%9B%BD%E5%8C%BA%E6%96%B9%E4%BE%BF%E5%AE%89%E5%85%A8%E7%9A%84%E4%BD%BF%E7%94%A8%E6%B5%B7%E5%A4%96%E5%85%AC%E5%BC%80%E5%AE%B9%E5%99%A8%E9%95%9C%E5%83%8F/002.png">
+<meta property="og:image" content="https://hello-liuyang.com/2020/11/14/%E5%9C%A8-AWS-%E4%B8%AD%E5%9B%BD%E5%8C%BA%E6%96%B9%E4%BE%BF%E5%AE%89%E5%85%A8%E7%9A%84%E4%BD%BF%E7%94%A8%E6%B5%B7%E5%A4%96%E5%85%AC%E5%BC%80%E5%AE%B9%E5%99%A8%E9%95%9C%E5%83%8F/003.png">
+<meta property="og:image" content="https://hello-liuyang.com/2020/11/14/%E5%9C%A8-AWS-%E4%B8%AD%E5%9B%BD%E5%8C%BA%E6%96%B9%E4%BE%BF%E5%AE%89%E5%85%A8%E7%9A%84%E4%BD%BF%E7%94%A8%E6%B5%B7%E5%A4%96%E5%85%AC%E5%BC%80%E5%AE%B9%E5%99%A8%E9%95%9C%E5%83%8F/004.png">
+<meta property="og:image" content="https://hello-liuyang.com/2020/11/14/%E5%9C%A8-AWS-%E4%B8%AD%E5%9B%BD%E5%8C%BA%E6%96%B9%E4%BE%BF%E5%AE%89%E5%85%A8%E7%9A%84%E4%BD%BF%E7%94%A8%E6%B5%B7%E5%A4%96%E5%85%AC%E5%BC%80%E5%AE%B9%E5%99%A8%E9%95%9C%E5%83%8F/005.png">
+<meta property="og:image" content="https://hello-liuyang.com/2020/11/14/%E5%9C%A8-AWS-%E4%B8%AD%E5%9B%BD%E5%8C%BA%E6%96%B9%E4%BE%BF%E5%AE%89%E5%85%A8%E7%9A%84%E4%BD%BF%E7%94%A8%E6%B5%B7%E5%A4%96%E5%85%AC%E5%BC%80%E5%AE%B9%E5%99%A8%E9%95%9C%E5%83%8F/006.png">
+<meta property="og:image" content="https://hello-liuyang.com/2020/11/14/%E5%9C%A8-AWS-%E4%B8%AD%E5%9B%BD%E5%8C%BA%E6%96%B9%E4%BE%BF%E5%AE%89%E5%85%A8%E7%9A%84%E4%BD%BF%E7%94%A8%E6%B5%B7%E5%A4%96%E5%85%AC%E5%BC%80%E5%AE%B9%E5%99%A8%E9%95%9C%E5%83%8F/007.png">
+<meta property="og:image" content="https://hello-liuyang.com/2020/11/14/%E5%9C%A8-AWS-%E4%B8%AD%E5%9B%BD%E5%8C%BA%E6%96%B9%E4%BE%BF%E5%AE%89%E5%85%A8%E7%9A%84%E4%BD%BF%E7%94%A8%E6%B5%B7%E5%A4%96%E5%85%AC%E5%BC%80%E5%AE%B9%E5%99%A8%E9%95%9C%E5%83%8F/008.png">
+<meta property="og:image" content="https://hello-liuyang.com/2020/11/14/%E5%9C%A8-AWS-%E4%B8%AD%E5%9B%BD%E5%8C%BA%E6%96%B9%E4%BE%BF%E5%AE%89%E5%85%A8%E7%9A%84%E4%BD%BF%E7%94%A8%E6%B5%B7%E5%A4%96%E5%85%AC%E5%BC%80%E5%AE%B9%E5%99%A8%E9%95%9C%E5%83%8F/009.png">
+<meta property="og:image" content="https://hello-liuyang.com/2020/11/14/%E5%9C%A8-AWS-%E4%B8%AD%E5%9B%BD%E5%8C%BA%E6%96%B9%E4%BE%BF%E5%AE%89%E5%85%A8%E7%9A%84%E4%BD%BF%E7%94%A8%E6%B5%B7%E5%A4%96%E5%85%AC%E5%BC%80%E5%AE%B9%E5%99%A8%E9%95%9C%E5%83%8F/010.png">
+<meta property="og:image" content="https://hello-liuyang.com/2020/11/14/%E5%9C%A8-AWS-%E4%B8%AD%E5%9B%BD%E5%8C%BA%E6%96%B9%E4%BE%BF%E5%AE%89%E5%85%A8%E7%9A%84%E4%BD%BF%E7%94%A8%E6%B5%B7%E5%A4%96%E5%85%AC%E5%BC%80%E5%AE%B9%E5%99%A8%E9%95%9C%E5%83%8F/011.png">
 <meta property="article:published_time" content="2020-11-14T08:57:56.000Z">
 <meta property="article:modified_time" content="2020-11-14T09:17:55.580Z">
-<meta property="article:author" content="John Doe">
+<meta property="article:author" content="liuyang-70d12d">
 <meta property="article:tag" content="AWS">
 <meta property="article:tag" content="Docker">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2020/11/14/%E5%9C%A8-AWS-%E4%B8%AD%E5%9B%BD%E5%8C%BA%E6%96%B9%E4%BE%BF%E5%AE%89%E5%85%A8%E7%9A%84%E4%BD%BF%E7%94%A8%E6%B5%B7%E5%A4%96%E5%85%AC%E5%BC%80%E5%AE%B9%E5%99%A8%E9%95%9C%E5%83%8F/001.png">
-  
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  
-<link rel="stylesheet" href="/css/style.css">
+<meta name="twitter:image" content="https://hello-liuyang.com/2020/11/14/%E5%9C%A8-AWS-%E4%B8%AD%E5%9B%BD%E5%8C%BA%E6%96%B9%E4%BE%BF%E5%AE%89%E5%85%A8%E7%9A%84%E4%BD%BF%E7%94%A8%E6%B5%B7%E5%A4%96%E5%85%AC%E5%BC%80%E5%AE%B9%E5%99%A8%E9%95%9C%E5%83%8F/001.png"><title>在 AWS 中国区方便安全的使用海外公开容器镜像 | Hello, Stranger</title><link ref="canonical" href="https://hello-liuyang.com/2020/11/14/%E5%9C%A8-AWS-%E4%B8%AD%E5%9B%BD%E5%8C%BA%E6%96%B9%E4%BE%BF%E5%AE%89%E5%85%A8%E7%9A%84%E4%BD%BF%E7%94%A8%E6%B5%B7%E5%A4%96%E5%85%AC%E5%BC%80%E5%AE%B9%E5%99%A8%E9%95%9C%E5%83%8F/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.3.0"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  assistSearch: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":6},
+  header: {"enable":true,"showOnPost":true,"scrollDownIcon":false},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"light","wordWrap":false},
+  reward: false,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"Copy","copySuccess":"Copy Success","copyError":"Copy Error"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
 
-<meta name="generator" content="Hexo 5.2.0"></head>
-
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
-      </h1>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
-      </div>
-    </div>
-  </div>
-</header>
-      <div class="outer">
-        <section id="main"><article id="post-在-AWS-中国区方便安全的使用海外公开容器镜像" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/11/14/%E5%9C%A8-AWS-%E4%B8%AD%E5%9B%BD%E5%8C%BA%E6%96%B9%E4%BE%BF%E5%AE%89%E5%85%A8%E7%9A%84%E4%BD%BF%E7%94%A8%E6%B5%B7%E5%A4%96%E5%85%AC%E5%BC%80%E5%AE%B9%E5%99%A8%E9%95%9C%E5%83%8F/" class="article-date">
-  <time datetime="2020-11-14T08:57:56.000Z" itemprop="datePublished">2020-11-14</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      在 AWS 中国区方便安全的使用海外公开容器镜像
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>参考资料：</strong></p>
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.2.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">Home</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">Archives</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">Hello, Stranger</div><div class="header-banner-info__subtitle"></div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">在 AWS 中国区方便安全的使用海外公开容器镜像</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2020-11-14</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2020-11-14</span></span></div></header><div class="post-body"><p><strong>参考资料：</strong></p>
 <ol>
-<li><a target="_blank" rel="noopener" href="https://aws.amazon.com/cn/blogs/china/convenient-and-safe-use-of-overseas-public-container-images-in-aws-china/">在 AWS 中国区方便安全的使用海外公开容器镜像 - AWS Team - 亚马逊AWS官方博客</a></li>
+<li><span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://aws.amazon.com/cn/blogs/china/convenient-and-safe-use-of-overseas-public-container-images-in-aws-china/">在 AWS 中国区方便安全的使用海外公开容器镜像 - AWS Team - 亚马逊AWS官方博客</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></li>
 </ol>
-<h2 id="Step-1-申请海外云服务器"><a href="#Step-1-申请海外云服务器" class="headerlink" title="Step 1 申请海外云服务器"></a>Step 1 申请海外云服务器</h2><p>此处使用的是 AWS-EC2- <strong>us-east-2</strong> -Ubuntu 18.04。</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apt update</span><br><span class="line">apt upgrade</span><br></pre></td></tr></table></figure>
+
+        <h2 id="Step-1-申请海外云服务器">
+          <a href="#Step-1-申请海外云服务器" class="heading-link"><i class="fas fa-link"></i></a>Step 1 申请海外云服务器</h2>
+      <p>此处使用的是 AWS-EC2- <strong>us-east-2</strong> -Ubuntu 18.04。</p>
+<figure class="highlight sh"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apt update</span><br><span class="line">apt upgrade</span><br></pre></td></tr></table></div></figure>
 
 
 
-<h2 id="Step-2-安装Node-js"><a href="#Step-2-安装Node-js" class="headerlink" title="Step 2 安装Node.js"></a>Step 2 安装Node.js</h2><p>这部分内容参考 <a target="_blank" rel="noopener" href="https://hello-liuyang.com/2020/11/09/Ubuntu%2018.04%20%E5%AE%89%E8%A3%85%20Node.js/">Ubuntu 18.04 安装 Node.js</a></p>
-<h2 id="Step-3-安装-AWS-CLI工具"><a href="#Step-3-安装-AWS-CLI工具" class="headerlink" title="Step 3 安装 AWS CLI工具"></a>Step 3 安装 AWS CLI工具</h2><p> awscli是用Python写的，安装Python和pip后直接运行下面命令就可以了。 </p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">  apt install python3-pip</span></span><br><span class="line">pip3 install awscli</span><br></pre></td></tr></table></figure>
+
+        <h2 id="Step-2-安装Node-js">
+          <a href="#Step-2-安装Node-js" class="heading-link"><i class="fas fa-link"></i></a>Step 2 安装Node.js</h2>
+      <p>这部分内容参考 <a href="https://hello-liuyang.com/2020/11/09/Ubuntu%2018.04%20%E5%AE%89%E8%A3%85%20Node.js/">Ubuntu 18.04 安装 Node.js</a></p>
+
+        <h2 id="Step-3-安装-AWS-CLI工具">
+          <a href="#Step-3-安装-AWS-CLI工具" class="heading-link"><i class="fas fa-link"></i></a>Step 3 安装 AWS CLI工具</h2>
+      <p> awscli是用Python写的，安装Python和pip后直接运行下面命令就可以了。 </p>
+<figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">  apt install python3-pip</span></span><br><span class="line">pip3 install awscli</span><br></pre></td></tr></table></div></figure>
 
 <p>可以通过 <code>aws</code> 来确认： </p>
 <img src="/2020/11/14/%E5%9C%A8-AWS-%E4%B8%AD%E5%9B%BD%E5%8C%BA%E6%96%B9%E4%BE%BF%E5%AE%89%E5%85%A8%E7%9A%84%E4%BD%BF%E7%94%A8%E6%B5%B7%E5%A4%96%E5%85%AC%E5%BC%80%E5%AE%B9%E5%99%A8%E9%95%9C%E5%83%8F/001.png" class>
 
 
 
-<h2 id="Step-4-创建IAM-user"><a href="#Step-4-创建IAM-user" class="headerlink" title="Step 4 创建IAM user"></a>Step 4 创建IAM user</h2><p>Ref: <a target="_blank" rel="noopener" href="https://www.jianshu.com/p/cd7be494435a">AWS CLI 基本使用</a></p>
+
+        <h2 id="Step-4-创建IAM-user">
+          <a href="#Step-4-创建IAM-user" class="heading-link"><i class="fas fa-link"></i></a>Step 4 创建IAM user</h2>
+      <p>Ref: <span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://www.jianshu.com/p/cd7be494435a">AWS CLI 基本使用</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
 <p>注意：这里使用的是 <strong>AWS全球区（即海外）</strong> IAM用户的Access Key和Secret Access Key </p>
-<h3 id="如果之前没有-IAM-user"><a href="#如果之前没有-IAM-user" class="headerlink" title="如果之前没有 IAM user"></a>如果之前没有 IAM user</h3><p>以 Root user 登录，访问 IAM 服务，进入 IAM 控制面板。如图所示，添加用户：</p>
+
+        <h3 id="如果之前没有-IAM-user">
+          <a href="#如果之前没有-IAM-user" class="heading-link"><i class="fas fa-link"></i></a>如果之前没有 IAM user</h3>
+      <p>以 Root user 登录，访问 IAM 服务，进入 IAM 控制面板。如图所示，添加用户：</p>
 <img src="/2020/11/14/%E5%9C%A8-AWS-%E4%B8%AD%E5%9B%BD%E5%8C%BA%E6%96%B9%E4%BE%BF%E5%AE%89%E5%85%A8%E7%9A%84%E4%BD%BF%E7%94%A8%E6%B5%B7%E5%A4%96%E5%85%AC%E5%BC%80%E5%AE%B9%E5%99%A8%E9%95%9C%E5%83%8F/002.png" class>
 
 <p>注意勾选以下选项：</p>
@@ -133,7 +92,10 @@
 <img src="/2020/11/14/%E5%9C%A8-AWS-%E4%B8%AD%E5%9B%BD%E5%8C%BA%E6%96%B9%E4%BE%BF%E5%AE%89%E5%85%A8%E7%9A%84%E4%BD%BF%E7%94%A8%E6%B5%B7%E5%A4%96%E5%85%AC%E5%BC%80%E5%AE%B9%E5%99%A8%E9%95%9C%E5%83%8F/004.png" class>
 
 <p><strong>最后记得保存记录有密钥信息、登录网址的csv文件。</strong></p>
-<h3 id="如果已经是以-IAM-user-身份登录"><a href="#如果已经是以-IAM-user-身份登录" class="headerlink" title="如果已经是以 IAM user 身份登录"></a>如果已经是以 IAM user 身份登录</h3><p>如图操作即可：</p>
+
+        <h3 id="如果已经是以-IAM-user-身份登录">
+          <a href="#如果已经是以-IAM-user-身份登录" class="heading-link"><i class="fas fa-link"></i></a>如果已经是以 IAM user 身份登录</h3>
+      <p>如图操作即可：</p>
 <img src="/2020/11/14/%E5%9C%A8-AWS-%E4%B8%AD%E5%9B%BD%E5%8C%BA%E6%96%B9%E4%BE%BF%E5%AE%89%E5%85%A8%E7%9A%84%E4%BD%BF%E7%94%A8%E6%B5%B7%E5%A4%96%E5%85%AC%E5%BC%80%E5%AE%B9%E5%99%A8%E9%95%9C%E5%83%8F/005.png" class>
 
 <img src="/2020/11/14/%E5%9C%A8-AWS-%E4%B8%AD%E5%9B%BD%E5%8C%BA%E6%96%B9%E4%BE%BF%E5%AE%89%E5%85%A8%E7%9A%84%E4%BD%BF%E7%94%A8%E6%B5%B7%E5%A4%96%E5%85%AC%E5%BC%80%E5%AE%B9%E5%99%A8%E9%95%9C%E5%83%8F/006.png" class>
@@ -141,15 +103,18 @@
 
 
 <p><strong>Note: 如果之前创建过访问密钥，并且仍然保存着的话，没必要重复创建</strong></p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ aws configure</span><br><span class="line">AWS Access Key ID [None]: &lt;your-accesskeyID&gt;</span><br><span class="line">AWS Secret Access Key [None]: &lt;your-secretAccessKey&gt;</span><br><span class="line">Default region name [None]: us-east-2 <span class="comment"># 根据自己的IAM用户所属区域进行修改</span></span><br><span class="line">Default output format [None]: json</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ aws configure</span><br><span class="line">AWS Access Key ID [None]: &lt;your-accesskeyID&gt;</span><br><span class="line">AWS Secret Access Key [None]: &lt;your-secretAccessKey&gt;</span><br><span class="line">Default region name [None]: us-east-2 <span class="comment"># 根据自己的IAM用户所属区域进行修改</span></span><br><span class="line">Default output format [None]: json</span><br></pre></td></tr></table></div></figure>
 
 
 
-<h2 id="Step-5-构建CDK项目"><a href="#Step-5-构建CDK项目" class="headerlink" title="Step 5 构建CDK项目"></a>Step 5 构建CDK项目</h2><p>克隆github 项目并构建此CDK项目：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> https://github.com/aws-samples/amazon-ecr-replication-for-pub-container-images.git</span><br><span class="line">$ <span class="built_in">cd</span> amazon-ecr-replication-for-pub-container-images</span><br><span class="line">$ npm install</span><br></pre></td></tr></table></figure>
+
+        <h2 id="Step-5-构建CDK项目">
+          <a href="#Step-5-构建CDK项目" class="heading-link"><i class="fas fa-link"></i></a>Step 5 构建CDK项目</h2>
+      <p>克隆github 项目并构建此CDK项目：</p>
+<figure class="highlight bash"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> https://github.com/aws-samples/amazon-ecr-replication-for-pub-container-images.git</span><br><span class="line">$ <span class="built_in">cd</span> amazon-ecr-replication-for-pub-container-images</span><br><span class="line">$ npm install</span><br></pre></td></tr></table></div></figure>
 
 <p>部署此方案到AWS海外区域，其中 <code>targetRegion</code>，<code>targetRegionAK</code> 和 <code>targetRegionSK</code> 分别代表AWS国内区域、AWS用户的 <code>access key</code> 和 <code>secret access key</code>。此秘钥会保存在AWS Secrets Manager中以供CodeBuild登录AWS国内区域ECR。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 如果海外的IAM用户没有 CDKToolkit 堆栈，需要先执行下面这条命令，否则报错（其实根据报错信息也可以知道需要执行下面这条命令）</span></span><br><span class="line"><span class="comment"># $ npx cdk bootstrap aws://unknown-account/unknown-region</span></span><br><span class="line">$ npx cdk deploy --parameters targetRegion=cn-northwest-1 --parameters targetRegionAK=&lt;your-accesskeyID&gt; --parameters targetRegionSK=&lt;your-secretAccessKey&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 如果海外的IAM用户没有 CDKToolkit 堆栈，需要先执行下面这条命令，否则报错（其实根据报错信息也可以知道需要执行下面这条命令）</span></span><br><span class="line"><span class="comment"># $ npx cdk bootstrap aws://unknown-account/unknown-region</span></span><br><span class="line">$ npx cdk deploy --parameters targetRegion=cn-northwest-1 --parameters targetRegionAK=&lt;your-accesskeyID&gt; --parameters targetRegionSK=&lt;your-secretAccessKey&gt;</span><br></pre></td></tr></table></div></figure>
 
 <p>  执行成功后在海外区账户的控制台中查看 <code>CloudFormation</code> 服务，可以看到如下堆栈：</p>
 <img src="/2020/11/14/%E5%9C%A8-AWS-%E4%B8%AD%E5%9B%BD%E5%8C%BA%E6%96%B9%E4%BE%BF%E5%AE%89%E5%85%A8%E7%9A%84%E4%BD%BF%E7%94%A8%E6%B5%B7%E5%A4%96%E5%85%AC%E5%BC%80%E5%AE%B9%E5%99%A8%E9%95%9C%E5%83%8F/007.png" class>
@@ -157,7 +122,10 @@
 <p>继续查看 <code>CodeCommit</code> 服务，可以看到如下存储库：</p>
 <img src="/2020/11/14/%E5%9C%A8-AWS-%E4%B8%AD%E5%9B%BD%E5%8C%BA%E6%96%B9%E4%BE%BF%E5%AE%89%E5%85%A8%E7%9A%84%E4%BD%BF%E7%94%A8%E6%B5%B7%E5%A4%96%E5%85%AC%E5%BC%80%E5%AE%B9%E5%99%A8%E9%95%9C%E5%83%8F/008.png" class>
 
-<h2 id="Step-6-在海外IAM用户上更新-pub-images-mirror-images-txt"><a href="#Step-6-在海外IAM用户上更新-pub-images-mirror-images-txt" class="headerlink" title="Step 6 在海外IAM用户上更新 pub-images-mirror/images.txt"></a>Step 6 在海外IAM用户上更新 pub-images-mirror/images.txt</h2><p>如图，点击“编辑”：</p>
+
+        <h2 id="Step-6-在海外IAM用户上更新-pub-images-mirror-images-txt">
+          <a href="#Step-6-在海外IAM用户上更新-pub-images-mirror-images-txt" class="heading-link"><i class="fas fa-link"></i></a>Step 6 在海外IAM用户上更新 pub-images-mirror/images.txt</h2>
+      <p>如图，点击“编辑”：</p>
 <img src="/2020/11/14/%E5%9C%A8-AWS-%E4%B8%AD%E5%9B%BD%E5%8C%BA%E6%96%B9%E4%BE%BF%E5%AE%89%E5%85%A8%E7%9A%84%E4%BD%BF%E7%94%A8%E6%B5%B7%E5%A4%96%E5%85%AC%E5%BC%80%E5%AE%B9%E5%99%A8%E9%95%9C%E5%83%8F/009.png" class>
 
 <p>把要传送回国内的镜像如图中红框所示，加入到 <code>images.txt</code> 中即可。国内的IAM用户就可以在其 <strong>ECR-存储库</strong> 中看到所拉取的镜像：</p>
@@ -167,130 +135,12 @@
 <img src="/2020/11/14/%E5%9C%A8-AWS-%E4%B8%AD%E5%9B%BD%E5%8C%BA%E6%96%B9%E4%BE%BF%E5%AE%89%E5%85%A8%E7%9A%84%E4%BD%BF%E7%94%A8%E6%B5%B7%E5%A4%96%E5%85%AC%E5%BC%80%E5%AE%B9%E5%99%A8%E9%95%9C%E5%83%8F/011.png" class>
 
 <p>到此为止，该服务搭建成功！</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2020/11/14/%E5%9C%A8-AWS-%E4%B8%AD%E5%9B%BD%E5%8C%BA%E6%96%B9%E4%BE%BF%E5%AE%89%E5%85%A8%E7%9A%84%E4%BD%BF%E7%94%A8%E6%B5%B7%E5%A4%96%E5%85%AC%E5%BC%80%E5%AE%B9%E5%99%A8%E9%95%9C%E5%83%8F/" data-id="ckhhh9fqt0006igsx3alw58tg" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AWS/" rel="tag">AWS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li></ul>
-
-    </footer>
-  </div>
-  
-    
-<nav id="article-nav">
-  
-  
-    <a href="/2020/11/13/%E4%BD%BF%E7%94%A8PuTTY%E9%80%9A%E8%BF%87%E5%AF%86%E9%92%A5%E5%AF%B9%E4%BB%8EWindows%E8%BF%9E%E6%8E%A5%E5%88%B0Linux%E5%AE%9E%E4%BE%8B/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">使用PuTTY通过密钥对从Windows连接到Linux实例</div>
-    </a>
-  
-</nav>
-
-  
-</article>
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AWS/" rel="tag">AWS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/" rel="tag">Node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PuTTY/" rel="tag">PuTTY</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu/" rel="tag">Ubuntu</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/AWS/" style="font-size: 10px;">AWS</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Node-js/" style="font-size: 10px;">Node.js</a> <a href="/tags/PuTTY/" style="font-size: 10px;">PuTTY</a> <a href="/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2020/11/14/%E5%9C%A8-AWS-%E4%B8%AD%E5%9B%BD%E5%8C%BA%E6%96%B9%E4%BE%BF%E5%AE%89%E5%85%A8%E7%9A%84%E4%BD%BF%E7%94%A8%E6%B5%B7%E5%A4%96%E5%85%AC%E5%BC%80%E5%AE%B9%E5%99%A8%E9%95%9C%E5%83%8F/">在 AWS 中国区方便安全的使用海外公开容器镜像</a>
-          </li>
-        
-          <li>
-            <a href="/2020/11/13/%E4%BD%BF%E7%94%A8PuTTY%E9%80%9A%E8%BF%87%E5%AF%86%E9%92%A5%E5%AF%B9%E4%BB%8EWindows%E8%BF%9E%E6%8E%A5%E5%88%B0Linux%E5%AE%9E%E4%BE%8B/">使用PuTTY通过密钥对从Windows连接到Linux实例</a>
-          </li>
-        
-          <li>
-            <a href="/2020/11/09/Ubuntu%2018.04%20%E5%AE%89%E8%A3%85%20Node.js/">Ubuntu 18.04 安装 Node.js</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2020 John Doe<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
-
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-
-  
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-
-  
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
-
-
-
-
-<script src="/js/script.js"></script>
-
-
-
-
-  </div>
-</body>
-</html>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ END ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">Author: </span><span class="copyright-author__value"><a href="https://hello-liuyang.com">liuyang-70d12d</a></span></div><div class="copyright-link"><span class="copyright-link__name">Link: </span><span class="copyright-link__value"><a href="https://hello-liuyang.com/2020/11/14/%E5%9C%A8-AWS-%E4%B8%AD%E5%9B%BD%E5%8C%BA%E6%96%B9%E4%BE%BF%E5%AE%89%E5%85%A8%E7%9A%84%E4%BD%BF%E7%94%A8%E6%B5%B7%E5%A4%96%E5%85%AC%E5%BC%80%E5%AE%B9%E5%99%A8%E9%95%9C%E5%83%8F/">https://hello-liuyang.com/2020/11/14/%E5%9C%A8-AWS-%E4%B8%AD%E5%9B%BD%E5%8C%BA%E6%96%B9%E4%BE%BF%E5%AE%89%E5%85%A8%E7%9A%84%E4%BD%BF%E7%94%A8%E6%B5%B7%E5%A4%96%E5%85%AC%E5%BC%80%E5%AE%B9%E5%99%A8%E9%95%9C%E5%83%8F/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">Copyright: </span><span class="copyright-notice__value">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> unless stating additionally</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://hello-liuyang.com/tags/AWS/">AWS</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://hello-liuyang.com/tags/Docker/">Docker</a></span></div><nav class="post-paginator paginator"><div class="paginator-next"><a class="paginator-next__link" href="/2020/11/13/%E4%BD%BF%E7%94%A8PuTTY%E9%80%9A%E8%BF%87%E5%AF%86%E9%92%A5%E5%AF%B9%E4%BB%8EWindows%E8%BF%9E%E6%8E%A5%E5%88%B0Linux%E5%AE%9E%E4%BE%8B/"><span class="paginator-prev__text">使用PuTTY通过密钥对从Windows连接到Linux实例</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">Catalog</span><span class="sidebar-nav-ov">Overview</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Step-1-%E7%94%B3%E8%AF%B7%E6%B5%B7%E5%A4%96%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-number">1.</span> <span class="toc-text">
+          Step 1 申请海外云服务器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Step-2-%E5%AE%89%E8%A3%85Node-js"><span class="toc-number">2.</span> <span class="toc-text">
+          Step 2 安装Node.js</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Step-3-%E5%AE%89%E8%A3%85-AWS-CLI%E5%B7%A5%E5%85%B7"><span class="toc-number">3.</span> <span class="toc-text">
+          Step 3 安装 AWS CLI工具</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Step-4-%E5%88%9B%E5%BB%BAIAM-user"><span class="toc-number">4.</span> <span class="toc-text">
+          Step 4 创建IAM user</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E6%9E%9C%E4%B9%8B%E5%89%8D%E6%B2%A1%E6%9C%89-IAM-user"><span class="toc-number">4.1.</span> <span class="toc-text">
+          如果之前没有 IAM user</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E6%9E%9C%E5%B7%B2%E7%BB%8F%E6%98%AF%E4%BB%A5-IAM-user-%E8%BA%AB%E4%BB%BD%E7%99%BB%E5%BD%95"><span class="toc-number">4.2.</span> <span class="toc-text">
+          如果已经是以 IAM user 身份登录</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Step-5-%E6%9E%84%E5%BB%BACDK%E9%A1%B9%E7%9B%AE"><span class="toc-number">5.</span> <span class="toc-text">
+          Step 5 构建CDK项目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Step-6-%E5%9C%A8%E6%B5%B7%E5%A4%96IAM%E7%94%A8%E6%88%B7%E4%B8%8A%E6%9B%B4%E6%96%B0-pub-images-mirror-images-txt"><span class="toc-number">6.</span> <span class="toc-text">
+          Step 6 在海外IAM用户上更新 pub-images-mirror&#x2F;images.txt</span></a></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/images/icons/stun-logo.svg" alt="avatar"></div><p class="sidebar-ov-author__text">hello world</p></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">3</div><div class="sidebar-ov-state-item__name">Archives</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="Creative Commons" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">You have read </span><span class="sidebar-reading-info__num">0</span><span class="sidebar-reading-info__perc">%</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2020</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>liuyang-70d12d</span></div><div><span>Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a></span><span> v5.2.0</span><span class="footer__devider">|</span><span>Theme - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.3.0</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?v=2.3.0"></script><script src="/js/stun-boot.js?v=2.3.0"></script><script src="/js/scroll.js?v=2.3.0"></script><script src="/js/header.js?v=2.3.0"></script><script src="/js/sidebar.js?v=2.3.0"></script></body></html>
