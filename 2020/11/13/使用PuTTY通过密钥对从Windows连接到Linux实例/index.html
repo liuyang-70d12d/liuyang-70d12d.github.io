@@ -1,9 +1,9 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/assets/favicon/favicon_01/favicon-16x16.png?v=2.3.0" type="image/png" sizes="16x16"><link rel="icon" href="/assets/favicon/favicon_01/favicon-32x32.png?v=2.3.0" type="image/png" sizes="32x32"><meta name="description" content="参考资料：  使用 PuTTY 从 Windows 连接到 Linux 实例                      使用 PuTTYgen 转换私有密钥       PuTTY 自身并不支持由 SSH 密钥的生成的私有密钥格式 (.pem)。PuTTY 提供一个名为 PuTTYgen 的工具，此工具可以将密钥转换为所需的 PuTTY 格式。您必须如下所示将私有密钥（.pem 文件）转换为此格式">
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/assets/favicon/favicon_01/favicon-16x16.png?v=2.3.0" type="image/png" sizes="16x16"><link rel="icon" href="/assets/favicon/favicon_01/favicon-32x32.png?v=2.3.0" type="image/png" sizes="32x32"><meta name="description" content="参考资料：  使用 PuTTY 从 Windows 连接到 Linux 实例                      使用 PuTTYgen 转换私有密钥        PuTTY 自身并不支持由 SSH 密钥的生成的私有密钥格式 (.pem)。PuTTY 提供一个名为 PuTTYgen 的工具，此工具可以将密钥转换为所需的 PuTTY 格式。您必须如下所示将私有密钥（.pem 文件）转换为此格">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用PuTTY通过密钥对从Windows连接到Linux实例">
 <meta property="og:url" content="https://hello-liuyang.com/2020/11/13/%E4%BD%BF%E7%94%A8PuTTY%E9%80%9A%E8%BF%87%E5%AF%86%E9%92%A5%E5%AF%B9%E4%BB%8EWindows%E8%BF%9E%E6%8E%A5%E5%88%B0Linux%E5%AE%9E%E4%BE%8B/index.html">
 <meta property="og:site_name" content="Hello, Stranger">
-<meta property="og:description" content="参考资料：  使用 PuTTY 从 Windows 连接到 Linux 实例                      使用 PuTTYgen 转换私有密钥       PuTTY 自身并不支持由 SSH 密钥的生成的私有密钥格式 (.pem)。PuTTY 提供一个名为 PuTTYgen 的工具，此工具可以将密钥转换为所需的 PuTTY 格式。您必须如下所示将私有密钥（.pem 文件）转换为此格式">
+<meta property="og:description" content="参考资料：  使用 PuTTY 从 Windows 连接到 Linux 实例                      使用 PuTTYgen 转换私有密钥        PuTTY 自身并不支持由 SSH 密钥的生成的私有密钥格式 (.pem)。PuTTY 提供一个名为 PuTTYgen 的工具，此工具可以将密钥转换为所需的 PuTTY 格式。您必须如下所示将私有密钥（.pem 文件）转换为此格">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://hello-liuyang.com/2020/11/13/%E4%BD%BF%E7%94%A8PuTTY%E9%80%9A%E8%BF%87%E5%AF%86%E9%92%A5%E5%AF%B9%E4%BB%8EWindows%E8%BF%9E%E6%8E%A5%E5%88%B0Linux%E5%AE%9E%E4%BE%8B/puttygen-key-type.png">
 <meta property="og:image" content="https://hello-liuyang.com/2020/11/13/%E4%BD%BF%E7%94%A8PuTTY%E9%80%9A%E8%BF%87%E5%AF%86%E9%92%A5%E5%AF%B9%E4%BB%8EWindows%E8%BF%9E%E6%8E%A5%E5%88%B0Linux%E5%AE%9E%E4%BE%8B/puttygen-load-key.png">
@@ -43,25 +43,26 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.2.0"></he
 <li><span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://docs.aws.amazon.com/zh_cn/AWSEC2/latest/UserGuide/putty.html">使用 PuTTY 从 Windows 连接到 Linux 实例</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></li>
 </ol>
 
-        <h2 id="使用-PuTTYgen-转换私有密钥">
-          <a href="#使用-PuTTYgen-转换私有密钥" class="heading-link"><i class="fas fa-link"></i></a>使用 PuTTYgen 转换私有密钥</h2>
-      <p>PuTTY 自身并不支持由 SSH 密钥的生成的私有密钥格式 (.pem)。PuTTY 提供一个名为 PuTTYgen 的工具，此工具可以将密钥转换为所需的 PuTTY 格式。您必须如下所示将私有密钥（.pem 文件）转换为此格式（.ppk 文件），以便使用 PuTTY 连接到您的实例。</p>
+        <h2 id="使用-puttygen-转换私有密钥">
+          <a href="#使用-puttygen-转换私有密钥" class="heading-link"><i class="fas fa-link"></i></a>使用 PuTTYgen 转换私有密钥</h2>
+      
+<p>PuTTY 自身并不支持由 SSH 密钥的生成的私有密钥格式 (.pem)。PuTTY 提供一个名为 PuTTYgen 的工具，此工具可以将密钥转换为所需的 PuTTY 格式。您必须如下所示将私有密钥（.pem 文件）转换为此格式（.ppk 文件），以便使用 PuTTY 连接到您的实例。</p>
 <p><strong>转换您的私有密钥</strong></p>
 <ol>
 <li>从 <strong>Start (开始)</strong> 菜单中，依次选择 <strong>All Programs (所有程序)</strong> 、 <strong>PuTTY</strong> 、 <strong>PuTTYgen</strong>。</li>
 <li>在 <strong>Type of key to generate</strong> 下，选择 <strong>RSA</strong>。如果您使用的是旧版本的 PuTTYgen，请选择 <strong>SSH-2 RSA</strong>。</li>
 </ol>
 <img src="/2020/11/13/%E4%BD%BF%E7%94%A8PuTTY%E9%80%9A%E8%BF%87%E5%AF%86%E9%92%A5%E5%AF%B9%E4%BB%8EWindows%E8%BF%9E%E6%8E%A5%E5%88%B0Linux%E5%AE%9E%E4%BE%8B/puttygen-key-type.png" class title="none"> 
-
 <ol start="3">
 <li>选择 <strong>Load</strong>。默认情况下，PuTTYgen 仅显示扩展名为 <code>.ppk</code> 的文件。要找到您的 <code>.pem</code> 文件，请选择显示所有类型的文件的选项。</li>
 </ol>
 <img src="/2020/11/13/%E4%BD%BF%E7%94%A8PuTTY%E9%80%9A%E8%BF%87%E5%AF%86%E9%92%A5%E5%AF%B9%E4%BB%8EWindows%E8%BF%9E%E6%8E%A5%E5%88%B0Linux%E5%AE%9E%E4%BE%8B/puttygen-load-key.png" class title="none">
-
 <ol start="4">
-<li><p>选择在启动实例时指定的密钥对的 <code>.pem</code> 文件，然后选择 <strong>Open (打开)</strong> 。PuTTYgen 会显示一个通知，指示已成功导入 <code>.pem</code> 文件。选择 <strong>OK</strong> 。</p>
+<li>
+<p>选择在启动实例时指定的密钥对的 <code>.pem</code> 文件，然后选择 <strong>Open (打开)</strong> 。PuTTYgen 会显示一个通知，指示已成功导入 <code>.pem</code> 文件。选择 <strong>OK</strong> 。</p>
 </li>
-<li><p>要以 PuTTY 可使用的格式保存密钥，请选择<strong>保存私有密钥</strong>。PuTTYgen 将显示有关保存没有密码的密钥的警告。选择<strong>是</strong>。</p>
+<li>
+<p>要以 PuTTY 可使用的格式保存密钥，请选择<strong>保存私有密钥</strong>。PuTTYgen 将显示有关保存没有密码的密钥的警告。选择<strong>是</strong>。</p>
 </li>
 </ol>
 <hr>
@@ -75,14 +76,17 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.2.0"></he
 <hr>
 <hr>
 
-        <h2 id="连接到-Linux-实例">
-          <a href="#连接到-Linux-实例" class="heading-link"><i class="fas fa-link"></i></a>连接到 Linux 实例</h2>
-      <p>通过以下过程使用 PuTTY 连接到您的 Linux 实例。您需要使用为私有密钥创建的 <code>.ppk</code> 文件。</p>
+        <h2 id="连接到-linux-实例">
+          <a href="#连接到-linux-实例" class="heading-link"><i class="fas fa-link"></i></a>连接到 Linux 实例</h2>
+      
+<p>通过以下过程使用 PuTTY 连接到您的 Linux 实例。您需要使用为私有密钥创建的 <code>.ppk</code> 文件。</p>
 <p><strong>使用 PuTTY 连接到您的实例</strong></p>
 <ol>
-<li><p>启动 PuTTY（在<strong>开始</strong>菜单中，选择<strong>所有程序 &gt; PuTTY &gt; PuTTY</strong>）。</p>
+<li>
+<p>启动 PuTTY（在<strong>开始</strong>菜单中，选择<strong>所有程序 &gt; PuTTY &gt; PuTTY</strong>）。</p>
 </li>
-<li><p>在 <strong>Category</strong> 窗格中，选择 <strong>Session</strong> 并填写以下字段：</p>
+<li>
+<p>在 <strong>Category</strong> 窗格中，选择 <strong>Session</strong> 并填写以下字段：</p>
 <p>a. 在<strong>主机名</strong>框中，执行以下操作之一：</p>
 <ul>
 <li>（公有 DNS）要使用实例的公有 DNS 名称进行连接，请输入 <code>my-instance-user-name</code>@<code>my-instance-public-dns-name</code>。</li>
@@ -94,26 +98,28 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.2.0"></he
 </li>
 </ol>
 <img src="/2020/11/13/%E4%BD%BF%E7%94%A8PuTTY%E9%80%9A%E8%BF%87%E5%AF%86%E9%92%A5%E5%AF%B9%E4%BB%8EWindows%E8%BF%9E%E6%8E%A5%E5%88%B0Linux%E5%AE%9E%E4%BE%8B/putty-session-config.png" class title="none"> 
-
 <ol start="3">
-<li><p>(可选) 您可以配置 PuTTY 以定期自动发送“保持连接”数据以将会话保持活动状态。要避免由于会话处于不活动状态而与实例断开连接，这是非常有用的。在 <strong>Category</strong> 窗格中，选择 <strong>Connection</strong>，然后在 <strong>Seconds between keepalives</strong> 字段中输入所需的间隔。例如，如果您的会话在处于不活动状态 10 分钟后断开连接，请输入 180 以将 PuTTY 配置为每隔 3 分钟发送一次保持活动数据。</p>
+<li>
+<p>(可选) 您可以配置 PuTTY 以定期自动发送“保持连接”数据以将会话保持活动状态。要避免由于会话处于不活动状态而与实例断开连接，这是非常有用的。在 <strong>Category</strong> 窗格中，选择 <strong>Connection</strong>，然后在 <strong>Seconds between keepalives</strong> 字段中输入所需的间隔。例如，如果您的会话在处于不活动状态 10 分钟后断开连接，请输入 180 以将 PuTTY 配置为每隔 3 分钟发送一次保持活动数据。</p>
 </li>
-<li><p>在 <strong>Category</strong> 窗格中，展开 <strong>Connection</strong>，再展开 <strong>SSH</strong>，然后选择 <strong>Auth</strong>。完成以下操作：</p>
+<li>
+<p>在 <strong>Category</strong> 窗格中，展开 <strong>Connection</strong>，再展开 <strong>SSH</strong>，然后选择 <strong>Auth</strong>。完成以下操作：</p>
 <p>a. 选择 <strong>Browse</strong>。</p>
 <p>b. 选择为密钥对生成的 <code>.ppk</code> 文件，然后选择<strong>打开</strong>。</p>
 <p>c. (可选) 如果打算稍后重新启动此会话，则可以保存此会话信息以便日后使用。在<strong>类别</strong>下面，选择<strong>会话</strong>，在<strong>保存的会话</strong>中输入会话的名称，然后选择<strong>保存</strong>。</p>
 <p>d. 选择 <strong>Open</strong>。</p>
 </li>
-<li><p>如果这是第一次连接到该实例，PuTTY 将显示安全警报对话框，以询问您是否信任要连接到的主机。选择<strong>是</strong>。将打开一个窗口，并且您连接到实例。</p>
+<li>
+<p>如果这是第一次连接到该实例，PuTTY 将显示安全警报对话框，以询问您是否信任要连接到的主机。选择<strong>是</strong>。将打开一个窗口，并且您连接到实例。</p>
 </li>
 </ol>
 <hr>
 <p><strong>注意</strong></p>
 <p>如果您在将私有密钥转换成 PuTTY 格式时指定了密码，当您登录到实例时，您必须提供该密码。</p>
 <hr>
-</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ END ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">Author: </span><span class="copyright-author__value"><a href="https://hello-liuyang.com">liuyang-70d12d</a></span></div><div class="copyright-link"><span class="copyright-link__name">Link: </span><span class="copyright-link__value"><a href="https://hello-liuyang.com/2020/11/13/%E4%BD%BF%E7%94%A8PuTTY%E9%80%9A%E8%BF%87%E5%AF%86%E9%92%A5%E5%AF%B9%E4%BB%8EWindows%E8%BF%9E%E6%8E%A5%E5%88%B0Linux%E5%AE%9E%E4%BE%8B/">https://hello-liuyang.com/2020/11/13/%E4%BD%BF%E7%94%A8PuTTY%E9%80%9A%E8%BF%87%E5%AF%86%E9%92%A5%E5%AF%B9%E4%BB%8EWindows%E8%BF%9E%E6%8E%A5%E5%88%B0Linux%E5%AE%9E%E4%BE%8B/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">Copyright: </span><span class="copyright-notice__value">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> unless stating additionally</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://hello-liuyang.com/tags/Linux/">Linux</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://hello-liuyang.com/tags/PuTTY/">PuTTY</a></span></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2020/11/14/%E5%9C%A8-AWS-%E4%B8%AD%E5%9B%BD%E5%8C%BA%E6%96%B9%E4%BE%BF%E5%AE%89%E5%85%A8%E7%9A%84%E4%BD%BF%E7%94%A8%E6%B5%B7%E5%A4%96%E5%85%AC%E5%BC%80%E5%AE%B9%E5%99%A8%E9%95%9C%E5%83%8F/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">在 AWS 中国区方便安全的使用海外公开容器镜像</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2020/11/09/Ubuntu%2018.04%20%E5%AE%89%E8%A3%85%20Node.js/"><span class="paginator-prev__text">Ubuntu 18.04 安装 Node.js</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">Catalog</span><span class="sidebar-nav-ov">Overview</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-PuTTYgen-%E8%BD%AC%E6%8D%A2%E7%A7%81%E6%9C%89%E5%AF%86%E9%92%A5"><span class="toc-number">1.</span> <span class="toc-text">
-          使用 PuTTYgen 转换私有密钥</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9E%E6%8E%A5%E5%88%B0-Linux-%E5%AE%9E%E4%BE%8B"><span class="toc-number">2.</span> <span class="toc-text">
-          连接到 Linux 实例</span></a></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/assets/avatar/avatar.png" alt="avatar"></div></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="mailto:ly_liuyang19@qq.com" target="_blank" rel="noopener" data-popover="social.mail" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">Email</span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">6</div><div class="sidebar-ov-state-item__name">Archives</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">8</div><div class="sidebar-ov-state-item__name">Tags</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="Creative Commons" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">You have read </span><span class="sidebar-reading-info__num">0</span><span class="sidebar-reading-info__perc">%</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2020</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>liuyang-70d12d</span></div><div><span>Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a></span><span> v5.2.0</span><span class="footer__devider">|</span><span>Theme - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.3.0</span></div><div class="busuanzi"><span class="busuanzi-siteuv"><span class="busuanzi-siteuv__icon"><i class="fas fa-user"></i></span><span class="busuanzi-siteuv__info">Visitors</span><span class="busuanzi-siteuv__value" id="busuanzi_value_site_uv"></span></span><span class="busuanzi-sitepv"><span class="busuanzi-siteuv__icon"><i class="fas fa-eye"></i></span><span class="busuanzi-siteuv__info">Views</span><span class="busuanzi-siteuv__value" id="busuanzi_value_site_pv"></span></span></div><div><span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span><script>var now = new Date();
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ END ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">Author: </span><span class="copyright-author__value"><a href="https://hello-liuyang.com">liuyang-70d12d</a></span></div><div class="copyright-link"><span class="copyright-link__name">Link: </span><span class="copyright-link__value"><a href="https://hello-liuyang.com/2020/11/13/%E4%BD%BF%E7%94%A8PuTTY%E9%80%9A%E8%BF%87%E5%AF%86%E9%92%A5%E5%AF%B9%E4%BB%8EWindows%E8%BF%9E%E6%8E%A5%E5%88%B0Linux%E5%AE%9E%E4%BE%8B/">https://hello-liuyang.com/2020/11/13/%E4%BD%BF%E7%94%A8PuTTY%E9%80%9A%E8%BF%87%E5%AF%86%E9%92%A5%E5%AF%B9%E4%BB%8EWindows%E8%BF%9E%E6%8E%A5%E5%88%B0Linux%E5%AE%9E%E4%BE%8B/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">Copyright: </span><span class="copyright-notice__value">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> unless stating additionally</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://hello-liuyang.com/tags/Linux/">Linux</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://hello-liuyang.com/tags/PuTTY/">PuTTY</a></span></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2020/11/14/%E5%9C%A8-AWS-%E4%B8%AD%E5%9B%BD%E5%8C%BA%E6%96%B9%E4%BE%BF%E5%AE%89%E5%85%A8%E7%9A%84%E4%BD%BF%E7%94%A8%E6%B5%B7%E5%A4%96%E5%85%AC%E5%BC%80%E5%AE%B9%E5%99%A8%E9%95%9C%E5%83%8F/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">在 AWS 中国区方便安全的使用海外公开容器镜像</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2020/11/09/Ubuntu%2018.04%20%E5%AE%89%E8%A3%85%20Node.js/"><span class="paginator-prev__text">Ubuntu 18.04 安装 Node.js</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">Catalog</span><span class="sidebar-nav-ov">Overview</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-puttygen-%E8%BD%AC%E6%8D%A2%E7%A7%81%E6%9C%89%E5%AF%86%E9%92%A5"><span class="toc-number">1.</span> <span class="toc-text">
+          使用 PuTTYgen 转换私有密钥</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9E%E6%8E%A5%E5%88%B0-linux-%E5%AE%9E%E4%BE%8B"><span class="toc-number">2.</span> <span class="toc-text">
+          连接到 Linux 实例</span></a></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/assets/avatar/avatar.png" alt="avatar"></div></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="mailto:ly_liuyang19@qq.com" target="_blank" rel="noopener" data-popover="social.mail" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">Email</span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">7</div><div class="sidebar-ov-state-item__name">Archives</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">10</div><div class="sidebar-ov-state-item__name">Tags</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="Creative Commons" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">You have read </span><span class="sidebar-reading-info__num">0</span><span class="sidebar-reading-info__perc">%</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2020</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>liuyang-70d12d</span></div><div><span>Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a></span><span> v5.2.0</span><span class="footer__devider">|</span><span>Theme - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.3.0</span></div><div class="busuanzi"><span class="busuanzi-siteuv"><span class="busuanzi-siteuv__icon"><i class="fas fa-user"></i></span><span class="busuanzi-siteuv__info">Visitors</span><span class="busuanzi-siteuv__value" id="busuanzi_value_site_uv"></span></span><span class="busuanzi-sitepv"><span class="busuanzi-siteuv__icon"><i class="fas fa-eye"></i></span><span class="busuanzi-siteuv__info">Views</span><span class="busuanzi-siteuv__value" id="busuanzi_value_site_pv"></span></span></div><div><span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span><script>var now = new Date();
 function createtime() {
 var grt= new Date("11/09/2020 00:00:00");
 now.setTime(now.getTime()+250);
@@ -126,4 +132,4 @@ snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
 document.getElementById("timeDate").innerHTML = "我已来到这个世界 "+dnum+" 天 ";
 document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
 }
-setInterval("createtime()",250);</script></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="https://cdn.jsdelivr.net/gh/sukkaw/busuanzi@latest/bsz.pure.mini.js" async></script><script src="/js/utils.js?v=2.3.0"></script><script src="/js/stun-boot.js?v=2.3.0"></script><script src="/js/scroll.js?v=2.3.0"></script><script src="/js/header.js?v=2.3.0"></script><script src="/js/sidebar.js?v=2.3.0"></script></body></html>
+setInterval("createtime()",250);</script></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><link href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css" rel="stylesheet" type="text/css"><link href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/copy-tex.css" rel="stylesheet" type="text/css"><script src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/copy-tex.min.js"></script><script src="https://cdn.jsdelivr.net/gh/sukkaw/busuanzi@latest/bsz.pure.mini.js" async></script><script src="/js/utils.js?v=2.3.0"></script><script src="/js/stun-boot.js?v=2.3.0"></script><script src="/js/scroll.js?v=2.3.0"></script><script src="/js/header.js?v=2.3.0"></script><script src="/js/sidebar.js?v=2.3.0"></script></body></html>

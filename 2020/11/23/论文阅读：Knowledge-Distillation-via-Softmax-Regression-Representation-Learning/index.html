@@ -1,10 +1,19 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/assets/favicon/favicon_01/favicon-16x16.png?v=2.3.0" type="image/png" sizes="16x16"><link rel="icon" href="/assets/favicon/favicon_01/favicon-32x32.png?v=2.3.0" type="image/png" sizes="32x32"><meta property="og:type" content="website">
-<meta property="og:title" content="Hello, Stranger">
-<meta property="og:url" content="https://hello-liuyang.com/index.html">
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/assets/favicon/favicon_01/favicon-16x16.png?v=2.3.0" type="image/png" sizes="16x16"><link rel="icon" href="/assets/favicon/favicon_01/favicon-32x32.png?v=2.3.0" type="image/png" sizes="32x32"><meta name="description" content="Knowledge distillation via softmax regression representation learning Under review as a conference paper at ICLR 2021 Anonymous authors Paper under double-blind review  Paper Adress">
+<meta property="og:type" content="article">
+<meta property="og:title" content="论文阅读：Knowledge Distillation via Softmax Regression Representation Learning">
+<meta property="og:url" content="https://hello-liuyang.com/2020/11/23/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%EF%BC%9AKnowledge-Distillation-via-Softmax-Regression-Representation-Learning/index.html">
 <meta property="og:site_name" content="Hello, Stranger">
+<meta property="og:description" content="Knowledge distillation via softmax regression representation learning Under review as a conference paper at ICLR 2021 Anonymous authors Paper under double-blind review  Paper Adress">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://hello-liuyang.com/2020/11/23/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%EF%BC%9AKnowledge-Distillation-via-Softmax-Regression-Representation-Learning/001.png">
+<meta property="og:image" content="https://hello-liuyang.com/2020/11/23/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%EF%BC%9AKnowledge-Distillation-via-Softmax-Regression-Representation-Learning/002.png">
+<meta property="article:published_time" content="2020-11-23T02:01:56.000Z">
+<meta property="article:modified_time" content="2020-11-24T03:01:00.180Z">
 <meta property="article:author" content="liuyang-70d12d">
-<meta name="twitter:card" content="summary"><title>Hello, Stranger</title><link ref="canonical" href="https://hello-liuyang.com/index.html"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.3.0"><script>var Stun = window.Stun || {};
+<meta property="article:tag" content="Paper">
+<meta property="article:tag" content="Knowledge Distillation">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://hello-liuyang.com/2020/11/23/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%EF%BC%9AKnowledge-Distillation-via-Softmax-Regression-Representation-Learning/001.png"><title>论文阅读：Knowledge Distillation via Softmax Regression Representation Learning | Hello, Stranger</title><link ref="canonical" href="https://hello-liuyang.com/2020/11/23/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%EF%BC%9AKnowledge-Distillation-via-Softmax-Regression-Representation-Learning/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.3.0"><script>var Stun = window.Stun || {};
 var CONFIG = {
   root: '/',
   algolia: undefined,
@@ -28,7 +37,7 @@ var CONFIG = {
   sourcePath: {"js":"js","css":"css","images":"images"},
 };
 
-window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.2.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">Home</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">Archives</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">Tags</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">Hello, Stranger</div><div class="header-banner-info__subtitle"></div></div><div class="header-banner-arrow"><div class="header-banner-arrow__icon"><i class="fas fa-angle-down"></i></div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content content-home" id="content"><section class="postlist"><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2020/11/23/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%EF%BC%9AKnowledge-Distillation-via-Softmax-Regression-Representation-Learning/">论文阅读：Knowledge Distillation via Softmax Regression Representation Learning</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2020-11-23</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2020-11-24</span></span></div></header><div class="post-body"><div class="post-excerpt"><p><font face="Adobe Caslon Pro"><strong>Knowledge distillation via softmax regression representation learning</strong></font></p>
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.2.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner header-inner--height header-inner--bgcolor"><nav class="header-nav header-nav--sticky"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">Home</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">Archives</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">Tags</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">论文阅读：Knowledge Distillation via Softmax Regression Representation Learning</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2020-11-23</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2020-11-24</span></span><span class="post-meta-item post-meta-item--visitors"><span class="post-meta-item__icon"><i class="fas fa-eye"></i></span><span class="post-meta-item__info">Visited</span><span class="post-meta-item__value" id="busuanzi_value_page_pv"></span></span></div></header><div class="post-body"><p><font face="Adobe Caslon Pro"><strong>Knowledge distillation via softmax regression representation learning</strong></font></p>
 <p><font face="Adobe Caslon Pro"><em>Under review as a conference paper at ICLR 2021</em></font></p>
 <p><font face="Adobe Caslon Pro"><em>Anonymous authors</em></font></p>
 <p><font face="Adobe Caslon Pro"><em>Paper under double-blind review</em> </font></p>
@@ -111,347 +120,11 @@ during training the student.</strong></font> <span class="katex"><span class="ka
           <a href="#font-faceadobe-caslon-proconclusionfont" class="heading-link"><i class="fas fa-link"></i></a>Conclusion</h2>
       
 <p><font face="Adobe Caslon Pro">We presented a method for knowledge distillation that optimizes the output feature of the penultimate layer of the student network and hence is directly related to representation learning. A key to our method is the newly proposed Softmax Regression Loss which was found necessary for effective representation learning.</font></p>
-</div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2020/11/21/Axure-Hello-World-%E5%BE%AE%E4%BF%A1%E5%8F%91%E7%8E%B0%E9%A1%B5%E9%9D%A2%E7%BA%BF%E6%A1%86%E5%9B%BE/">Axure: Hello World - 微信发现页面线框图</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2020-11-21</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2020-11-21</span></span></div></header><div class="post-body"><div class="post-excerpt"><p><strong>参考资料：</strong></p>
-<p><span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Yx411f7d6?from=search&amp;seid=17268737462765174266">Axure教程视频，0基础入门，2小时学会 - P1 Axure线框图 - Song老师课堂 - 哔哩哔哩</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
-<p><strong>Axure 版本：</strong> Axure RP 8</p>
- <img src="/2020/11/21/Axure-Hello-World-%E5%BE%AE%E4%BF%A1%E5%8F%91%E7%8E%B0%E9%A1%B5%E9%9D%A2%E7%BA%BF%E6%A1%86%E5%9B%BE/01.png" class>
-<p>没什么营养的一篇“文章”，只是秀一下探索到了新技能：）</p>
-</div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2020/11/18/SVN-%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/">SVN 快速入门</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2020-11-18</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2020-11-20</span></span></div></header><div class="post-body"><div class="post-excerpt"><p><strong>参考资料：</strong></p>
-<ol>
-<li><span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://www.runoob.com/svn/svn-tutorial.html">SVN 教程 - 菜鸟教程</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></li>
-<li><span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://www.cnblogs.com/xjcheng1/p/7220136.html">svn_authz配置文件总结</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></li>
-<li><span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://www.cnblogs.com/daxuezhidao/p/5716213.html">SVN服务器在Ubuntu16.04下搭建多版本库详细教程</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></li>
-<li><span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://blog.csdn.net/qq_31305965/article/details/89359873">Ubuntu SVN安装及使用</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></li>
-<li><span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000014549695">3分钟练成SVN命令高手：SVN常用命令</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></li>
-</ol>
-
-        <h2 id="svn-简介">
-          <a href="#svn-简介" class="heading-link"><i class="fas fa-link"></i></a>SVN 简介</h2>
-      
-<p>Subversion(SVN) 是一个开源的版本控制系統, 也就是说 Subversion 管理着随时间改变的数据。 这些数据放置在一个中央资料档案库(repository) 中。 这个档案库很像一个普通的文件服务器, 不过它会记住每一次文件的变动。 这样你就可以把档案恢复到旧的版本, 或是浏览文件的变动历史。</p>
-
-        <h3 id="svn-的一些概念">
-          <a href="#svn-的一些概念" class="heading-link"><i class="fas fa-link"></i></a>SVN 的一些概念</h3>
-      
-<ul>
-<li><strong>repository（源代码库）:</strong> 源代码统一存放的地方</li>
-<li><strong>Checkout（提取）:</strong> 当你手上没有源代码的时候，你需要从repository checkout一份</li>
-<li><strong>Commit（提交）:</strong> 当你已经修改了代码，你就需要Commit到repository</li>
-<li><strong>Update (更新):</strong> 当你已经Checkout了一份源代码， Update一下你就可以和Repository上的源代码同步，你手上的代码就会有最新的变更</li>
-</ul>
-<p>日常开发过程其实就是这样的（假设你已经Checkout并且已经工作了几天）：Update(获得最新的代码) → 作出自己的修改并调试成功 → Commit(大家就可以看到你的修改了) 。</p>
-<p>如果两个程序员同时修改了同一个文件呢，SVN 可以合并这两个程序员的改动，实际上SVN管理源代码是以行为单位的，就是说两个程序员只要不是修改了同一行程序，SVN都会自动合并两种修改。如果是同一行，SVN 会提示文件 Conflict（冲突），需要手动确认。</p>
-
-        <h2 id="在-ubuntu-系统上安装svn">
-          <a href="#在-ubuntu-系统上安装svn" class="heading-link"><i class="fas fa-link"></i></a>在 Ubuntu 系统上安装SVN</h2>
-      
-<figure class="highlight sh"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt install subversion</span><br></pre></td></tr></table></div></figure>
-<p>通过命令 <code>svn --version</code> 验证安装成功。</p>
-
-        <h2 id="svn-实践">
-          <a href="#svn-实践" class="heading-link"><i class="fas fa-link"></i></a>SVN 实践</h2>
-      
-
-        <h3 id="server端创建版本库">
-          <a href="#server端创建版本库" class="heading-link"><i class="fas fa-link"></i></a>（Server端）创建版本库</h3>
-      
-<p>版本库相当于一个集中的空间，用于存放开发者所有的工作成果。版本库不仅能存放文件，还包括了每次修改的历史，即每个文件的变动历史。</p>
-<p>Create 操作是用来创建一个新的版本库。大多数情况下这个操作只会执行一次。当你创建一个新的版本库的时候，你的版本控制系统会让你提供一些信息来标识版本库，例如创建的位置和版本库的名字。</p>
-<p>使用 <code>svn</code> 命令创建资源库</p>
-<figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 创建版本库目录</span></span><br><span class="line">mkdir -p /opt/svn/example_repo_1</span><br><span class="line">mkdir -p /opt/svn/example_repo_2</span><br><span class="line"><span class="meta">#</span><span class="bash"> 使用svn命令创建版本库</span></span><br><span class="line">svnadmin create /opt/svn/example_repo_1</span><br><span class="line">svnadmin create /opt/svn/example_repo_2</span><br></pre></td></tr></table></div></figure>
-<p><strong>为了便于管理，将所有版本库的密码和权限设置放在同一个文件中，操作步骤如下：</strong></p>
-<p>将 <code>example_repo_1</code> 目录下 <code>conf</code> 文件夹中的 <code>authz</code> 和 <code>passwd</code> 两个文件复制到 <code>svn</code> 根目录下面</p>
-
-        <h4 id="svn服务配置文件svnserveconf">
-          <a href="#svn服务配置文件svnserveconf" class="heading-link"><i class="fas fa-link"></i></a>svn服务配置文件svnserve.conf</h4>
-      
-<p>svn服务配置文件为版本库目录中的文件 <code>conf/svnserve.conf</code>。该文件仅由一个 <code>[general]</code> 配置段组成。</p>
-<p>修改每个版本库目录 <code>conf</code> 文件夹下面的 <code>svnserve.conf</code> 文件， 将</p>
-<figure class="highlight plain"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># anon-access &#x3D; read</span><br><span class="line"># auth-access &#x3D; write</span><br><span class="line"># password-db &#x3D; passwd</span><br><span class="line"># authz-db &#x3D; authz </span><br></pre></td></tr></table></div></figure>
-<p>修改为：</p>
-<figure class="highlight plain"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">anon-access &#x3D; none </span><br><span class="line">auth-access&#x3D; write</span><br><span class="line">password-db &#x3D; ..&#x2F;..&#x2F;passwd</span><br><span class="line">authz-db &#x3D; ..&#x2F;..&#x2F;authz</span><br></pre></td></tr></table></div></figure>
-<ul>
-<li><strong>anon-access:</strong> 控制未认证（匿名）用户访问版本库的权限，取值范围为&quot;write&quot;、“read&quot;和&quot;none”。 即&quot;write&quot;为可读可写，&quot;read&quot;为只读，&quot;none&quot;表示无访问权限。 默认值：read</li>
-<li><strong>auth-access:</strong> 控制认证用户访问版本库的权限。取值范围为&quot;write&quot;、“read&quot;和&quot;none”。 即&quot;write&quot;为可读可写，&quot;read&quot;为只读，&quot;none&quot;表示无访问权限。 默认值：write</li>
-<li><strong>authz-db:</strong> 指定权限配置文件名，通过该文件可以实现以路径为基础（path-based）的访问控制。 除非指定绝对路径，否则文件位置为相对 <code>conf</code> 目录的相对路径。 默认值：authz</li>
-<li><strong>realm:</strong> 指定版本库的认证域，即在登录时提示的认证域名称。若两个版本库的认证域相同，建议使用相同的用户名口令文件。 默认值：一个UUID（Universal Unique IDentifier，全局唯一标识）。</li>
-</ul>
-
-        <h4 id="用户名口令文件passwd">
-          <a href="#用户名口令文件passwd" class="heading-link"><i class="fas fa-link"></i></a>用户名口令文件passwd</h4>
-      
-<p>用户名口令文件由 <code>svnserve.conf</code> 的配置项 <code>password-db</code> 指定，默认为 <code>conf</code> 目录中的 <code>passwd</code>，<strong>但是，我们在上面将svn服务配置文件指向了svn根目录下的passwd文件</strong>。该文件仅由一个 <code>[users]</code> 配置段组成。</p>
-<p><code>[users]</code> 配置段的配置行格式为：<code>&lt;用户名&gt; = &lt;口令&gt;</code>，注意 <code>=</code> 前后都需要有空格。</p>
-<p>编辑svn根目录下的 <code>passwd</code> 文件：</p>
-<figure class="highlight plain"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[users]</span><br><span class="line">admin &#x3D; admin</span><br><span class="line">writer &#x3D; writer</span><br><span class="line">reader &#x3D; reader</span><br><span class="line">test &#x3D; test</span><br></pre></td></tr></table></div></figure>
-
-        <h4 id="权限配置文件authz">
-          <a href="#权限配置文件authz" class="heading-link"><i class="fas fa-link"></i></a>权限配置文件authz</h4>
-      
-<p>权限配置文件由 <code>svnserve.conf</code> 的配置项 <code>authz-db</code> 指定，默认为 <code>conf</code> 目录中的 <code>authz</code>，<strong>但是，我们在上面将svn服务配置文件指向了svn根目录下的authz文件</strong>。该配置文件由一个 <code>[groups]</code> 配置段和若干个版本库路径权限段组成。</p>
-<p><code>[groups]</code> 配置段中配置行格式为：<code>&lt;用户组&gt; = &lt;用户列表&gt;</code></p>
-<figure class="highlight plain"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[groups]</span><br><span class="line">g_admin &#x3D; admin</span><br><span class="line">g_writer &#x3D; writer</span><br><span class="line">g_reader &#x3D; reader</span><br><span class="line">g_test &#x3D; test</span><br></pre></td></tr></table></div></figure>
-<p>版本库路径权限段的段名格式为：<code>[&lt;版本库名&gt;:&lt;路径&gt;]</code></p>
-<figure class="highlight plain"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">[&#x2F;]</span><br><span class="line">@g_admin &#x3D; rw              #表示svn根目录下只有g_admin才有读写权限</span><br><span class="line">* &#x3D; 					   #其余用户组（在这里即 user）没有任何权限</span><br><span class="line"></span><br><span class="line">[example_repo_1:&#x2F;]</span><br><span class="line">@g_admin &#x3D; rw				     #在example_repo_1库根目录下，g_admin有读写权限</span><br><span class="line">@g_writer &#x3D; rw              	 #在example_repo_1库根目录下，g_writer有读写权限</span><br><span class="line">* &#x3D; r                    	     #在example_repo_1库根目录下，其余用户组只有读权限</span><br><span class="line"></span><br><span class="line">[example_repo_2:&#x2F;]</span><br><span class="line">@g_admin &#x3D; rw				 #在example_repo_2库根目录下，g_admin有读写权限</span><br><span class="line">* &#x3D; r                        #在example_repo_2库根目录下，其余用户组只有读权限</span><br><span class="line"></span><br><span class="line">[example_repo_2:&#x2F;write]</span><br><span class="line">@g_admin &#x3D; rw				  #在example_repo_2库write目录下，g_admin有读写权限</span><br><span class="line">@g_writer &#x3D; rw                #在example_repo_2库write目录下，g_writer有读写权限</span><br><span class="line">@g_reader &#x3D; r                 #在example_repo_2库write目录下，g_reader只有读权限</span><br><span class="line">* &#x3D;                           #在example_repo_2库write目录下，其余用户组（在这里即 g_test）没有任何权限</span><br></pre></td></tr></table></div></figure>
-<p>启动 SVN 服务：</p>
-<figure class="highlight sh"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用svnserve命令启动服务</span></span><br><span class="line">svnserve --listen-port=8899 -d -r /opt/svn/</span><br></pre></td></tr></table></div></figure>
-<ul>
-<li><strong>–listen-port:</strong> 指定SVN监听端口，不加此参数，SVN默认监听3690</li>
-</ul>
-<p>可通过 <code>ps -ef|grep svn</code> 或者 <code>netstat -antp | grep svnserve</code> 查看是否存在svn进程已确定svn是否启动成功。</p>
-<p>如果想关闭服务，可使用 <code>pkill svnserve</code>。</p>
-
-        <h3 id="client端检出操作">
-          <a href="#client端检出操作" class="heading-link"><i class="fas fa-link"></i></a>（Client端）检出操作</h3>
-      
-<p>Checkout 操作是用来从版本库创建一个工作副本。工作副本是开发者私人的工作空间，可以进行内容的修改，然后提交到版本库中。</p>
-<p>检出操作 <code>checkout</code> 即将版本库克隆到本地。示例操作如下：</p>
-<figure class="highlight plain"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd ~</span><br><span class="line">mkdir svn_client</span><br><span class="line">cd svn_client</span><br></pre></td></tr></table></div></figure>
-<p>检出操作如下：</p>
-<figure class="highlight plain"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">svn checkout svn:&#x2F;&#x2F;localhost:8899&#x2F;example_repo_1 --username&#x3D;admin</span><br></pre></td></tr></table></div></figure>
-</div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2020/11/16/%E5%B0%86-Ubuntu-%E8%BD%AF%E4%BB%B6%E9%95%9C%E5%83%8F%E6%BA%90%E6%94%B9%E4%B8%BA%E5%9B%BD%E5%86%85%E6%BA%90%E7%9A%84%E6%96%B9%E6%B3%95/">将 Ubuntu 软件镜像源改为国内源的方法</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2020-11-16</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2020-11-16</span></span></div></header><div class="post-body"><div class="post-excerpt"><p><strong>参考资料：</strong></p>
-<ol>
-<li><span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41822647/article/details/85122467">ubuntu18.04配置镜像源</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></li>
-</ol>
-
-        <h2 id="将-ubuntu-1604-软件镜像源改为国内源的方法">
-          <a href="#将-ubuntu-1604-软件镜像源改为国内源的方法" class="heading-link"><i class="fas fa-link"></i></a>将 Ubuntu 16.04 软件镜像源改为国内源的方法</h2>
-      
-
-        <h3 id="备份原来的镜像源">
-          <a href="#备份原来的镜像源" class="heading-link"><i class="fas fa-link"></i></a>备份原来的镜像源</h3>
-      
-<figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo cp /etc/apt/sources.list /etc/apt/sources.list.backup</span><br></pre></td></tr></table></div></figure>
-
-        <h3 id="更换软件镜像源">
-          <a href="#更换软件镜像源" class="heading-link"><i class="fas fa-link"></i></a>更换软件镜像源</h3>
-      
-<figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /etc/apt/sources.list</span><br></pre></td></tr></table></div></figure>
-<p>清空原有内容，将下边的<code>阿里源</code>复制进去，然后保存关闭。</p>
-<p><strong>阿里源</strong></p>
-<figure class="highlight plain"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">deb http:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;ubuntu&#x2F; xenial main</span><br><span class="line">deb-src http:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;ubuntu&#x2F; xenial main</span><br><span class="line"></span><br><span class="line">deb http:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;ubuntu&#x2F; xenial-updates main</span><br><span class="line">deb-src http:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;ubuntu&#x2F; xenial-updates main</span><br><span class="line"></span><br><span class="line">deb http:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;ubuntu&#x2F; xenial universe</span><br><span class="line">deb-src http:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;ubuntu&#x2F; xenial universe</span><br><span class="line">deb http:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;ubuntu&#x2F; xenial-updates universe</span><br><span class="line">deb-src http:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;ubuntu&#x2F; xenial-updates universe</span><br><span class="line"></span><br><span class="line">deb http:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;ubuntu&#x2F; xenial-security main</span><br><span class="line">deb-src http:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;ubuntu&#x2F; xenial-security main</span><br><span class="line">deb http:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;ubuntu&#x2F; xenial-security universe</span><br><span class="line">deb-src http:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;ubuntu&#x2F; xenial-security universe</span><br></pre></td></tr></table></div></figure>
-
-        <h3 id="更新镜像源">
-          <a href="#更新镜像源" class="heading-link"><i class="fas fa-link"></i></a>更新镜像源</h3>
-      
-<figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get -f install</span><br><span class="line">sudo apt-get upgrade</span><br></pre></td></tr></table></div></figure>
-<p>以上三条命令的功能分别是：</p>
-<ul>
-<li>更新软件镜像源</li>
-<li>修复损坏的软件包，尝试卸载出错的包，重新安装正确版本的。</li>
-<li>更新软件版本</li>
-</ul>
-
-        <h3 id="其它常用源">
-          <a href="#其它常用源" class="heading-link"><i class="fas fa-link"></i></a>其它常用源</h3>
-      
-<p><strong>西电源</strong></p>
-<figure class="highlight plain"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">deb http:&#x2F;&#x2F;linux.xidian.edu.cn&#x2F;mirrors&#x2F;ubuntu&#x2F; xenial main restricted universe multiverse</span><br><span class="line">#deb-src http:&#x2F;&#x2F;linux.xidian.edu.cn&#x2F;mirrors&#x2F;ubuntu&#x2F; xenial main restricted universe multiverse</span><br><span class="line"></span><br><span class="line">deb http:&#x2F;&#x2F;linux.xidian.edu.cn&#x2F;mirrors&#x2F;ubuntu&#x2F; xenial-security main restricted universe multiverse</span><br><span class="line">#deb-src http:&#x2F;&#x2F;linux.xidian.edu.cn&#x2F;mirrors&#x2F;ubuntu&#x2F; xenial-security main restricted universe multiverse</span><br><span class="line"></span><br><span class="line">deb http:&#x2F;&#x2F;linux.xidian.edu.cn&#x2F;mirrors&#x2F;ubuntu&#x2F; xenial-updates main restricted universe multiverse</span><br><span class="line">#deb-src http:&#x2F;&#x2F;linux.xidian.edu.cn&#x2F;mirrors&#x2F;ubuntu&#x2F; xenial-updates main restricted universe multiverse</span><br><span class="line"></span><br><span class="line">#deb http:&#x2F;&#x2F;linux.xidian.edu.cn&#x2F;mirrors&#x2F;ubuntu&#x2F; xenial-backports main restricted universe multiverse</span><br><span class="line">#deb-src http:&#x2F;&#x2F;linux.xidian.edu.cn&#x2F;mirrors&#x2F;ubuntu&#x2F; xenial-backports main restricted universe multiverse</span><br><span class="line"></span><br><span class="line">#deb http:&#x2F;&#x2F;linux.xidian.edu.cn&#x2F;mirrors&#x2F;ubuntu&#x2F; xenial-proposed main restricted universe multiverse</span><br><span class="line">#deb-src http:&#x2F;&#x2F;linux.xidian.edu.cn&#x2F;mirrors&#x2F;ubuntu&#x2F; xenial-proposed main restricted universe multiverse</span><br></pre></td></tr></table></div></figure>
-<p><strong>清华源</strong></p>
-<figure class="highlight plain"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">deb https:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;ubuntu&#x2F; xenial main restricted universe multiverse</span><br><span class="line"># deb-src https:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;ubuntu&#x2F; xenial main restricted universe multiverse</span><br><span class="line">deb https:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;ubuntu&#x2F; xenial-updates main restricted universe multiverse</span><br><span class="line"># deb-src https:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;ubuntu&#x2F; xenial-updates main restricted universe multiverse</span><br><span class="line">deb https:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;ubuntu&#x2F; xenial-backports main restricted universe multiverse</span><br><span class="line"># deb-src https:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;ubuntu&#x2F; xenial-backports main restricted universe multiverse</span><br><span class="line">deb https:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;ubuntu&#x2F; xenial-security main restricted universe multiverse</span><br><span class="line"># deb-src https:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;ubuntu&#x2F; xenial-security main restricted universe multiverse</span><br></pre></td></tr></table></div></figure>
-<p><strong>网易源</strong></p>
-<figure class="highlight plain"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">deb http:&#x2F;&#x2F;mirrors.163.com&#x2F;ubuntu&#x2F; wily main restricted universe multiverse</span><br><span class="line">deb http:&#x2F;&#x2F;mirrors.163.com&#x2F;ubuntu&#x2F; wily-security main restricted universe multiverse</span><br><span class="line">deb http:&#x2F;&#x2F;mirrors.163.com&#x2F;ubuntu&#x2F; wily-updates main restricted universe multiverse</span><br><span class="line">deb http:&#x2F;&#x2F;mirrors.163.com&#x2F;ubuntu&#x2F; wily-proposed main restricted universe multiverse</span><br><span class="line">deb http:&#x2F;&#x2F;mirrors.163.com&#x2F;ubuntu&#x2F; wily-backports main restricted universe multiverse</span><br><span class="line">deb-src http:&#x2F;&#x2F;mirrors.163.com&#x2F;ubuntu&#x2F; wily main restricted universe multiverse</span><br><span class="line">deb-src http:&#x2F;&#x2F;mirrors.163.com&#x2F;ubuntu&#x2F; wily-security main restricted universe multiverse</span><br><span class="line">deb-src http:&#x2F;&#x2F;mirrors.163.com&#x2F;ubuntu&#x2F; wily-updates main restricted universe multiverse</span><br><span class="line">deb-src http:&#x2F;&#x2F;mirrors.163.com&#x2F;ubuntu&#x2F; wily-proposed main restricted universe multiverse</span><br><span class="line">deb-src http:&#x2F;&#x2F;mirrors.163.com&#x2F;ubuntu&#x2F; wily-backports main restricted universe multiverse</span><br></pre></td></tr></table></div></figure>
-
-        <h2 id="将-ubuntu-1804-软件镜像源改为国内源的方法">
-          <a href="#将-ubuntu-1804-软件镜像源改为国内源的方法" class="heading-link"><i class="fas fa-link"></i></a>将 Ubuntu 18.04 软件镜像源改为国内源的方法</h2>
-      
-
-        <h3 id="备份原来的镜像源-2">
-          <a href="#备份原来的镜像源-2" class="heading-link"><i class="fas fa-link"></i></a>备份原来的镜像源</h3>
-      
-<figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo cp /etc/apt/sources.list /etc/apt/sources.list.backup</span><br></pre></td></tr></table></div></figure>
-
-        <h3 id="更换软件镜像源-2">
-          <a href="#更换软件镜像源-2" class="heading-link"><i class="fas fa-link"></i></a>更换软件镜像源</h3>
-      
-<figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /etc/apt/sources.list</span><br></pre></td></tr></table></div></figure>
-<p>清空原有内容，将下边的<code>清华镜像源</code>复制进去，然后保存关闭。</p>
-<p><strong>清华镜像源</strong></p>
-<figure class="highlight plain"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">deb https:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;ubuntu&#x2F; bionic main restricted universe multiverse</span><br><span class="line">deb-src https:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;ubuntu&#x2F; bionic main restricted universe multiverse</span><br><span class="line">deb https:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;ubuntu&#x2F; bionic-updates main restricted universe multiverse</span><br><span class="line">deb-src https:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;ubuntu&#x2F; bionic-updates main restricted universe multiverse</span><br><span class="line">deb https:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;ubuntu&#x2F; bionic-backports main restricted universe multiverse</span><br><span class="line">deb-src https:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;ubuntu&#x2F; bionic-backports main restricted universe multiverse</span><br><span class="line">deb https:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;ubuntu&#x2F; bionic-security main restricted universe multiverse</span><br><span class="line">deb-src https:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;ubuntu&#x2F; bionic-security main restricted universe multiverse</span><br><span class="line"></span><br><span class="line"># 预发布软件源，不建议启用</span><br><span class="line"># deb https:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;ubuntu&#x2F; bionic-proposed main restricted universe multiverse</span><br><span class="line"># deb-src https:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;ubuntu&#x2F; bionic-proposed main restricted universe multiverse</span><br></pre></td></tr></table></div></figure>
-
-        <h3 id="更新镜像源-2">
-          <a href="#更新镜像源-2" class="heading-link"><i class="fas fa-link"></i></a>更新镜像源</h3>
-      
-<figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get -f install</span><br><span class="line">sudo apt-get upgrade</span><br></pre></td></tr></table></div></figure>
-</div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2020/11/14/%E5%9C%A8-AWS-%E4%B8%AD%E5%9B%BD%E5%8C%BA%E6%96%B9%E4%BE%BF%E5%AE%89%E5%85%A8%E7%9A%84%E4%BD%BF%E7%94%A8%E6%B5%B7%E5%A4%96%E5%85%AC%E5%BC%80%E5%AE%B9%E5%99%A8%E9%95%9C%E5%83%8F/">在 AWS 中国区方便安全的使用海外公开容器镜像</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2020-11-14</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2020-11-14</span></span></div></header><div class="post-body"><div class="post-excerpt"><p><strong>参考资料：</strong></p>
-<ol>
-<li><span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://aws.amazon.com/cn/blogs/china/convenient-and-safe-use-of-overseas-public-container-images-in-aws-china/">在 AWS 中国区方便安全的使用海外公开容器镜像 - AWS Team - 亚马逊AWS官方博客</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></li>
-</ol>
-
-        <h2 id="step-1-申请海外云服务器">
-          <a href="#step-1-申请海外云服务器" class="heading-link"><i class="fas fa-link"></i></a>Step 1 申请海外云服务器</h2>
-      
-<p>此处使用的是 AWS-EC2- <strong>us-east-2</strong> -Ubuntu 18.04。</p>
-<figure class="highlight sh"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apt update</span><br><span class="line">apt upgrade</span><br></pre></td></tr></table></div></figure>
-
-        <h2 id="step-2-安装nodejs">
-          <a href="#step-2-安装nodejs" class="heading-link"><i class="fas fa-link"></i></a>Step 2 安装Node.js</h2>
-      
-<p>这部分内容参考 <a href="https://hello-liuyang.com/2020/11/09/Ubuntu%2018.04%20%E5%AE%89%E8%A3%85%20Node.js/">Ubuntu 18.04 安装 Node.js</a></p>
-
-        <h2 id="step-3-安装-aws-cli工具">
-          <a href="#step-3-安装-aws-cli工具" class="heading-link"><i class="fas fa-link"></i></a>Step 3 安装 AWS CLI工具</h2>
-      
-<p>awscli是用Python写的，安装Python和pip后直接运行下面命令就可以了。</p>
-<figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">  apt install python3-pip</span></span><br><span class="line">pip3 install awscli</span><br></pre></td></tr></table></div></figure>
-<p>可以通过 <code>aws</code> 来确认：</p>
-<img src="/2020/11/14/%E5%9C%A8-AWS-%E4%B8%AD%E5%9B%BD%E5%8C%BA%E6%96%B9%E4%BE%BF%E5%AE%89%E5%85%A8%E7%9A%84%E4%BD%BF%E7%94%A8%E6%B5%B7%E5%A4%96%E5%85%AC%E5%BC%80%E5%AE%B9%E5%99%A8%E9%95%9C%E5%83%8F/001.png" class>
-
-        <h2 id="step-4-创建iam-user">
-          <a href="#step-4-创建iam-user" class="heading-link"><i class="fas fa-link"></i></a>Step 4 创建IAM user</h2>
-      
-<p>Ref: <span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://www.jianshu.com/p/cd7be494435a">AWS CLI 基本使用</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
-<p>注意：这里使用的是 <strong>AWS全球区（即海外）</strong> IAM用户的Access Key和Secret Access Key</p>
-
-        <h3 id="如果之前没有-iam-user">
-          <a href="#如果之前没有-iam-user" class="heading-link"><i class="fas fa-link"></i></a>如果之前没有 IAM user</h3>
-      
-<p>以 Root user 登录，访问 IAM 服务，进入 IAM 控制面板。如图所示，添加用户：</p>
-<img src="/2020/11/14/%E5%9C%A8-AWS-%E4%B8%AD%E5%9B%BD%E5%8C%BA%E6%96%B9%E4%BE%BF%E5%AE%89%E5%85%A8%E7%9A%84%E4%BD%BF%E7%94%A8%E6%B5%B7%E5%A4%96%E5%85%AC%E5%BC%80%E5%AE%B9%E5%99%A8%E9%95%9C%E5%83%8F/002.png" class>
-<p>注意勾选以下选项：</p>
-<p>在第一步：</p>
-<img src="/2020/11/14/%E5%9C%A8-AWS-%E4%B8%AD%E5%9B%BD%E5%8C%BA%E6%96%B9%E4%BE%BF%E5%AE%89%E5%85%A8%E7%9A%84%E4%BD%BF%E7%94%A8%E6%B5%B7%E5%A4%96%E5%85%AC%E5%BC%80%E5%AE%B9%E5%99%A8%E9%95%9C%E5%83%8F/003.png" class>
-<p>在第二步：</p>
-<img src="/2020/11/14/%E5%9C%A8-AWS-%E4%B8%AD%E5%9B%BD%E5%8C%BA%E6%96%B9%E4%BE%BF%E5%AE%89%E5%85%A8%E7%9A%84%E4%BD%BF%E7%94%A8%E6%B5%B7%E5%A4%96%E5%85%AC%E5%BC%80%E5%AE%B9%E5%99%A8%E9%95%9C%E5%83%8F/004.png" class>
-<p><strong>最后记得保存记录有密钥信息、登录网址的csv文件。</strong></p>
-
-        <h3 id="如果已经是以-iam-user-身份登录">
-          <a href="#如果已经是以-iam-user-身份登录" class="heading-link"><i class="fas fa-link"></i></a>如果已经是以 IAM user 身份登录</h3>
-      
-<p>如图操作即可：</p>
-<img src="/2020/11/14/%E5%9C%A8-AWS-%E4%B8%AD%E5%9B%BD%E5%8C%BA%E6%96%B9%E4%BE%BF%E5%AE%89%E5%85%A8%E7%9A%84%E4%BD%BF%E7%94%A8%E6%B5%B7%E5%A4%96%E5%85%AC%E5%BC%80%E5%AE%B9%E5%99%A8%E9%95%9C%E5%83%8F/005.png" class>
-<img src="/2020/11/14/%E5%9C%A8-AWS-%E4%B8%AD%E5%9B%BD%E5%8C%BA%E6%96%B9%E4%BE%BF%E5%AE%89%E5%85%A8%E7%9A%84%E4%BD%BF%E7%94%A8%E6%B5%B7%E5%A4%96%E5%85%AC%E5%BC%80%E5%AE%B9%E5%99%A8%E9%95%9C%E5%83%8F/006.png" class>
-<p><strong>Note: 如果之前创建过访问密钥，并且仍然保存着的话，没必要重复创建</strong></p>
-<figure class="highlight sh"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ aws configure</span><br><span class="line">AWS Access Key ID [None]: &lt;your-accesskeyID&gt;</span><br><span class="line">AWS Secret Access Key [None]: &lt;your-secretAccessKey&gt;</span><br><span class="line">Default region name [None]: us-east-2 <span class="comment"># 根据自己的IAM用户所属区域进行修改</span></span><br><span class="line">Default output format [None]: json</span><br></pre></td></tr></table></div></figure>
-
-        <h2 id="step-5-构建cdk项目">
-          <a href="#step-5-构建cdk项目" class="heading-link"><i class="fas fa-link"></i></a>Step 5 构建CDK项目</h2>
-      
-<p>克隆github 项目并构建此CDK项目：</p>
-<figure class="highlight bash"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> https://github.com/aws-samples/amazon-ecr-replication-for-pub-container-images.git</span><br><span class="line">$ <span class="built_in">cd</span> amazon-ecr-replication-for-pub-container-images</span><br><span class="line">$ npm install</span><br></pre></td></tr></table></div></figure>
-<p>部署此方案到AWS海外区域，其中 <code>targetRegion</code>，<code>targetRegionAK</code> 和 <code>targetRegionSK</code> 分别代表AWS国内区域、AWS用户的 <code>access key</code> 和 <code>secret access key</code>。此秘钥会保存在AWS Secrets Manager中以供CodeBuild登录AWS国内区域ECR。</p>
-<figure class="highlight bash"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 如果海外的IAM用户没有 CDKToolkit 堆栈，需要先执行下面这条命令，否则报错（其实根据报错信息也可以知道需要执行下面这条命令）</span></span><br><span class="line"><span class="comment"># $ npx cdk bootstrap aws://unknown-account/unknown-region</span></span><br><span class="line">$ npx cdk deploy --parameters targetRegion=cn-northwest-1 --parameters targetRegionAK=&lt;your-accesskeyID&gt; --parameters targetRegionSK=&lt;your-secretAccessKey&gt;</span><br></pre></td></tr></table></div></figure>
-<p>执行成功后在海外区账户的控制台中查看 <code>CloudFormation</code> 服务，可以看到如下堆栈：</p>
-<img src="/2020/11/14/%E5%9C%A8-AWS-%E4%B8%AD%E5%9B%BD%E5%8C%BA%E6%96%B9%E4%BE%BF%E5%AE%89%E5%85%A8%E7%9A%84%E4%BD%BF%E7%94%A8%E6%B5%B7%E5%A4%96%E5%85%AC%E5%BC%80%E5%AE%B9%E5%99%A8%E9%95%9C%E5%83%8F/007.png" class>
-<p>继续查看 <code>CodeCommit</code> 服务，可以看到如下存储库：</p>
-<img src="/2020/11/14/%E5%9C%A8-AWS-%E4%B8%AD%E5%9B%BD%E5%8C%BA%E6%96%B9%E4%BE%BF%E5%AE%89%E5%85%A8%E7%9A%84%E4%BD%BF%E7%94%A8%E6%B5%B7%E5%A4%96%E5%85%AC%E5%BC%80%E5%AE%B9%E5%99%A8%E9%95%9C%E5%83%8F/008.png" class>
-
-        <h2 id="step-6-在海外iam用户上更新-pub-images-mirrorimagestxt">
-          <a href="#step-6-在海外iam用户上更新-pub-images-mirrorimagestxt" class="heading-link"><i class="fas fa-link"></i></a>Step 6 在海外IAM用户上更新 pub-images-mirror/images.txt</h2>
-      
-<p>如图，点击“编辑”：</p>
-<img src="/2020/11/14/%E5%9C%A8-AWS-%E4%B8%AD%E5%9B%BD%E5%8C%BA%E6%96%B9%E4%BE%BF%E5%AE%89%E5%85%A8%E7%9A%84%E4%BD%BF%E7%94%A8%E6%B5%B7%E5%A4%96%E5%85%AC%E5%BC%80%E5%AE%B9%E5%99%A8%E9%95%9C%E5%83%8F/009.png" class>
-<p>把要传送回国内的镜像如图中红框所示，加入到 <code>images.txt</code> 中即可。国内的IAM用户就可以在其 <strong>ECR-存储库</strong> 中看到所拉取的镜像：</p>
-<img src="/2020/11/14/%E5%9C%A8-AWS-%E4%B8%AD%E5%9B%BD%E5%8C%BA%E6%96%B9%E4%BE%BF%E5%AE%89%E5%85%A8%E7%9A%84%E4%BD%BF%E7%94%A8%E6%B5%B7%E5%A4%96%E5%85%AC%E5%BC%80%E5%AE%B9%E5%99%A8%E9%95%9C%E5%83%8F/010.png" class>
-<p>点开一个看看：</p>
-<img src="/2020/11/14/%E5%9C%A8-AWS-%E4%B8%AD%E5%9B%BD%E5%8C%BA%E6%96%B9%E4%BE%BF%E5%AE%89%E5%85%A8%E7%9A%84%E4%BD%BF%E7%94%A8%E6%B5%B7%E5%A4%96%E5%85%AC%E5%BC%80%E5%AE%B9%E5%99%A8%E9%95%9C%E5%83%8F/011.png" class>
-<p>到此为止，该服务搭建成功！</p>
-</div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2020/11/13/%E4%BD%BF%E7%94%A8PuTTY%E9%80%9A%E8%BF%87%E5%AF%86%E9%92%A5%E5%AF%B9%E4%BB%8EWindows%E8%BF%9E%E6%8E%A5%E5%88%B0Linux%E5%AE%9E%E4%BE%8B/">使用PuTTY通过密钥对从Windows连接到Linux实例</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2020-11-13</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2020-11-13</span></span></div></header><div class="post-body"><div class="post-excerpt"><p><strong>参考资料：</strong></p>
-<ol>
-<li><span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://docs.aws.amazon.com/zh_cn/AWSEC2/latest/UserGuide/putty.html">使用 PuTTY 从 Windows 连接到 Linux 实例</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></li>
-</ol>
-
-        <h2 id="使用-puttygen-转换私有密钥">
-          <a href="#使用-puttygen-转换私有密钥" class="heading-link"><i class="fas fa-link"></i></a>使用 PuTTYgen 转换私有密钥</h2>
-      
-<p>PuTTY 自身并不支持由 SSH 密钥的生成的私有密钥格式 (.pem)。PuTTY 提供一个名为 PuTTYgen 的工具，此工具可以将密钥转换为所需的 PuTTY 格式。您必须如下所示将私有密钥（.pem 文件）转换为此格式（.ppk 文件），以便使用 PuTTY 连接到您的实例。</p>
-<p><strong>转换您的私有密钥</strong></p>
-<ol>
-<li>从 <strong>Start (开始)</strong> 菜单中，依次选择 <strong>All Programs (所有程序)</strong> 、 <strong>PuTTY</strong> 、 <strong>PuTTYgen</strong>。</li>
-<li>在 <strong>Type of key to generate</strong> 下，选择 <strong>RSA</strong>。如果您使用的是旧版本的 PuTTYgen，请选择 <strong>SSH-2 RSA</strong>。</li>
-</ol>
-<img src="/2020/11/13/%E4%BD%BF%E7%94%A8PuTTY%E9%80%9A%E8%BF%87%E5%AF%86%E9%92%A5%E5%AF%B9%E4%BB%8EWindows%E8%BF%9E%E6%8E%A5%E5%88%B0Linux%E5%AE%9E%E4%BE%8B/puttygen-key-type.png" class title="none"> 
-<ol start="3">
-<li>选择 <strong>Load</strong>。默认情况下，PuTTYgen 仅显示扩展名为 <code>.ppk</code> 的文件。要找到您的 <code>.pem</code> 文件，请选择显示所有类型的文件的选项。</li>
-</ol>
-<img src="/2020/11/13/%E4%BD%BF%E7%94%A8PuTTY%E9%80%9A%E8%BF%87%E5%AF%86%E9%92%A5%E5%AF%B9%E4%BB%8EWindows%E8%BF%9E%E6%8E%A5%E5%88%B0Linux%E5%AE%9E%E4%BE%8B/puttygen-load-key.png" class title="none">
-<ol start="4">
-<li>
-<p>选择在启动实例时指定的密钥对的 <code>.pem</code> 文件，然后选择 <strong>Open (打开)</strong> 。PuTTYgen 会显示一个通知，指示已成功导入 <code>.pem</code> 文件。选择 <strong>OK</strong> 。</p>
-</li>
-<li>
-<p>要以 PuTTY 可使用的格式保存密钥，请选择<strong>保存私有密钥</strong>。PuTTYgen 将显示有关保存没有密码的密钥的警告。选择<strong>是</strong>。</p>
-</li>
-</ol>
-<hr>
-<p><strong>注意</strong></p>
-<p>私有密钥上的密码提供额外一层保护。即使发现了您的私有密钥，也不能在没有密码的情况下使用该密钥。使用密码的缺点是自动化更难实现，因为需要人工干预以登录到实例或将文件复制到实例中。</p>
-<hr>
-<ol start="6">
-<li>为密钥指定您用于密钥对的相同名称（例如 <code>my-key-pair</code>）并选择 <strong>Save (保存)</strong> 。PuTTY 会自动添加 <code>.ppk</code> 文件扩展名。</li>
-</ol>
-<p>您的私有密钥格式现在是正确的 PuTTY 使用格式了。您现在可以使用 PuTTY 的 SSH 客户端连接到实例。</p>
-<hr>
-<hr>
-
-        <h2 id="连接到-linux-实例">
-          <a href="#连接到-linux-实例" class="heading-link"><i class="fas fa-link"></i></a>连接到 Linux 实例</h2>
-      
-<p>通过以下过程使用 PuTTY 连接到您的 Linux 实例。您需要使用为私有密钥创建的 <code>.ppk</code> 文件。</p>
-<p><strong>使用 PuTTY 连接到您的实例</strong></p>
-<ol>
-<li>
-<p>启动 PuTTY（在<strong>开始</strong>菜单中，选择<strong>所有程序 &gt; PuTTY &gt; PuTTY</strong>）。</p>
-</li>
-<li>
-<p>在 <strong>Category</strong> 窗格中，选择 <strong>Session</strong> 并填写以下字段：</p>
-<p>a. 在<strong>主机名</strong>框中，执行以下操作之一：</p>
-<ul>
-<li>（公有 DNS）要使用实例的公有 DNS 名称进行连接，请输入 <code>my-instance-user-name</code>@<code>my-instance-public-dns-name</code>。</li>
-<li>(IPv6) 或者，如果实例具有 IPv6 地址，要使用实例的 IPv6 地址进行连接，请输入 <code>my-instance-user-name</code>@<code>my-instance-IPv6-address</code>。</li>
-<li><strong>其实IPv4地址登录就可以了</strong></li>
-</ul>
-<p>b. 确保<strong>端口</strong>值为 22。</p>
-<p>c. 在<strong>连接类型</strong>下，选择 <strong>SSH</strong>。</p>
-</li>
-</ol>
-<img src="/2020/11/13/%E4%BD%BF%E7%94%A8PuTTY%E9%80%9A%E8%BF%87%E5%AF%86%E9%92%A5%E5%AF%B9%E4%BB%8EWindows%E8%BF%9E%E6%8E%A5%E5%88%B0Linux%E5%AE%9E%E4%BE%8B/putty-session-config.png" class title="none"> 
-<ol start="3">
-<li>
-<p>(可选) 您可以配置 PuTTY 以定期自动发送“保持连接”数据以将会话保持活动状态。要避免由于会话处于不活动状态而与实例断开连接，这是非常有用的。在 <strong>Category</strong> 窗格中，选择 <strong>Connection</strong>，然后在 <strong>Seconds between keepalives</strong> 字段中输入所需的间隔。例如，如果您的会话在处于不活动状态 10 分钟后断开连接，请输入 180 以将 PuTTY 配置为每隔 3 分钟发送一次保持活动数据。</p>
-</li>
-<li>
-<p>在 <strong>Category</strong> 窗格中，展开 <strong>Connection</strong>，再展开 <strong>SSH</strong>，然后选择 <strong>Auth</strong>。完成以下操作：</p>
-<p>a. 选择 <strong>Browse</strong>。</p>
-<p>b. 选择为密钥对生成的 <code>.ppk</code> 文件，然后选择<strong>打开</strong>。</p>
-<p>c. (可选) 如果打算稍后重新启动此会话，则可以保存此会话信息以便日后使用。在<strong>类别</strong>下面，选择<strong>会话</strong>，在<strong>保存的会话</strong>中输入会话的名称，然后选择<strong>保存</strong>。</p>
-<p>d. 选择 <strong>Open</strong>。</p>
-</li>
-<li>
-<p>如果这是第一次连接到该实例，PuTTY 将显示安全警报对话框，以询问您是否信任要连接到的主机。选择<strong>是</strong>。将打开一个窗口，并且您连接到实例。</p>
-</li>
-</ol>
-<hr>
-<p><strong>注意</strong></p>
-<p>如果您在将私有密钥转换成 PuTTY 格式时指定了密码，当您登录到实例时，您必须提供该密码。</p>
-<hr>
-</div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2020/11/09/Ubuntu%2018.04%20%E5%AE%89%E8%A3%85%20Node.js/">Ubuntu 18.04 安装 Node.js</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2020-11-09</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2020-11-09</span></span></div></header><div class="post-body"><div class="post-excerpt"><p><strong>参考资料：</strong></p>
-<ol>
-<li><span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://mupceet.com/2020/02/the-best-way-to-install-nodejs/">Ubuntu 安装 Node.js 的正确姿势</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></li>
-</ol>
-
-        <h2 id="step-1">
-          <a href="#step-1" class="heading-link"><i class="fas fa-link"></i></a>Step 1</h2>
-      
-<p>如果你已经安装了 Node，最好先把原来的卸载掉。</p>
-<p>卸载 Node，可能需要 root 权限。</p>
-<figure class="highlight sh"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt remove nodejs</span><br></pre></td></tr></table></div></figure>
-<p>移除之前的全局 node_modules 包。</p>
-<figure class="highlight sh"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#执行前请确认这个包是否存在这个位置</span></span><br><span class="line">$ sudo rm -rf /usr/lib/node_moudles</span><br></pre></td></tr></table></div></figure>
-
-        <h2 id="step-2-安装nvm">
-          <a href="#step-2-安装nvm" class="heading-link"><i class="fas fa-link"></i></a>Step 2 安装NVM</h2>
-      
-<p>NVM: 全称是 Node Version Manager, 也就是 Node 版本管理器。</p>
-<p>查看 NVM 的 <span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://github.com/creationix/nvm">Github 仓库</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>：</p>
-<figure class="highlight plain"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ curl -o- https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;nvm-sh&#x2F;nvm&#x2F;v0.37.0&#x2F;install.sh | bash</span><br></pre></td></tr></table></div></figure>
-
-        <h2 id="step-3-安装node">
-          <a href="#step-3-安装node" class="heading-link"><i class="fas fa-link"></i></a>Step 3 安装Node</h2>
-      
-<figure class="highlight sh"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装最新版本</span></span><br><span class="line">$ nvm install node</span><br><span class="line"><span class="comment"># 安装某一指定版本</span></span><br><span class="line">$ nvm install 12.14.1 <span class="comment"># or 10.10.0, 8.9.1, etc</span></span><br></pre></td></tr></table></div></figure>
-<p>查看所安装Node的版本 <code>node --version</code>：</p>
-<p><img src="/2020/11/09/Ubuntu%2018.04%20%E5%AE%89%E8%A3%85%20Node.js/001.png" class title="001}&lt;&#x2F;p&gt;"></p></div></div></article></section><nav class="paginator"><div class="paginator-inner"><span class="page-number current">1</span></div></nav></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><section class="sidebar-toc hide"></section><!-- ov = overview--><section class="sidebar-ov"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/assets/avatar/avatar.png" alt="avatar"></div></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="mailto:ly_liuyang19@qq.com" target="_blank" rel="noopener" data-popover="social.mail" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">Email</span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">7</div><div class="sidebar-ov-state-item__name">Archives</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">10</div><div class="sidebar-ov-state-item__name">Tags</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="Creative Commons" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2020</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>liuyang-70d12d</span></div><div><span>Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a></span><span> v5.2.0</span><span class="footer__devider">|</span><span>Theme - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.3.0</span></div><div class="busuanzi"><span class="busuanzi-siteuv"><span class="busuanzi-siteuv__icon"><i class="fas fa-user"></i></span><span class="busuanzi-siteuv__info">Visitors</span><span class="busuanzi-siteuv__value" id="busuanzi_value_site_uv"></span></span><span class="busuanzi-sitepv"><span class="busuanzi-siteuv__icon"><i class="fas fa-eye"></i></span><span class="busuanzi-siteuv__info">Views</span><span class="busuanzi-siteuv__value" id="busuanzi_value_site_pv"></span></span></div><div><span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span><script>var now = new Date();
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ END ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">Author: </span><span class="copyright-author__value"><a href="https://hello-liuyang.com">liuyang-70d12d</a></span></div><div class="copyright-link"><span class="copyright-link__name">Link: </span><span class="copyright-link__value"><a href="https://hello-liuyang.com/2020/11/23/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%EF%BC%9AKnowledge-Distillation-via-Softmax-Regression-Representation-Learning/">https://hello-liuyang.com/2020/11/23/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%EF%BC%9AKnowledge-Distillation-via-Softmax-Regression-Representation-Learning/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">Copyright: </span><span class="copyright-notice__value">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> unless stating additionally</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://hello-liuyang.com/tags/Paper/">Paper</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://hello-liuyang.com/tags/Knowledge-Distillation/">Knowledge Distillation</a></span></div><nav class="post-paginator paginator"><div class="paginator-next"><a class="paginator-next__link" href="/2020/11/21/Axure-Hello-World-%E5%BE%AE%E4%BF%A1%E5%8F%91%E7%8E%B0%E9%A1%B5%E9%9D%A2%E7%BA%BF%E6%A1%86%E5%9B%BE/"><span class="paginator-prev__text">Axure: Hello World - 微信发现页面线框图</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">Catalog</span><span class="sidebar-nav-ov">Overview</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#font-faceadobe-caslon-promain-ideafont"><span class="toc-number">1.</span> <span class="toc-text">
+          Main Idea</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#font-faceadobe-caslon-prokey-related-workfont"><span class="toc-number">2.</span> <span class="toc-text">
+          Key Related Work</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#font-faceadobe-caslon-promethodfont"><span class="toc-number">3.</span> <span class="toc-text">
+          Method</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#font-faceadobe-caslon-proconclusionfont"><span class="toc-number">4.</span> <span class="toc-text">
+          Conclusion</span></a></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/assets/avatar/avatar.png" alt="avatar"></div></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="mailto:ly_liuyang19@qq.com" target="_blank" rel="noopener" data-popover="social.mail" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">Email</span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">7</div><div class="sidebar-ov-state-item__name">Archives</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">10</div><div class="sidebar-ov-state-item__name">Tags</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="Creative Commons" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">You have read </span><span class="sidebar-reading-info__num">0</span><span class="sidebar-reading-info__perc">%</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2020</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>liuyang-70d12d</span></div><div><span>Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a></span><span> v5.2.0</span><span class="footer__devider">|</span><span>Theme - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.3.0</span></div><div class="busuanzi"><span class="busuanzi-siteuv"><span class="busuanzi-siteuv__icon"><i class="fas fa-user"></i></span><span class="busuanzi-siteuv__info">Visitors</span><span class="busuanzi-siteuv__value" id="busuanzi_value_site_uv"></span></span><span class="busuanzi-sitepv"><span class="busuanzi-siteuv__icon"><i class="fas fa-eye"></i></span><span class="busuanzi-siteuv__info">Views</span><span class="busuanzi-siteuv__value" id="busuanzi_value_site_pv"></span></span></div><div><span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span><script>var now = new Date();
 function createtime() {
 var grt= new Date("11/09/2020 00:00:00");
 now.setTime(now.getTime()+250);
