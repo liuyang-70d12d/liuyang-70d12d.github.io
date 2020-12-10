@@ -28,7 +28,86 @@ var CONFIG = {
   sourcePath: {"js":"js","css":"css","images":"images"},
 };
 
-window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.2.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">Home</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">Archives</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">Tags</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">Hello, Stranger</div><div class="header-banner-info__subtitle"></div></div><div class="header-banner-arrow"><div class="header-banner-arrow__icon"><i class="fas fa-angle-down"></i></div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content content-home" id="content"><section class="postlist"><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2020/11/09/Ubuntu%2018.04%20%E5%AE%89%E8%A3%85%20Node.js/">Ubuntu 18.04 安装 Node.js</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2020-11-09</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2020-11-09</span></span></div></header><div class="post-body"><div class="post-excerpt"><p><strong>参考资料：</strong></p>
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.2.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">Home</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">Archives</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">Tags</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">Hello, Stranger</div><div class="header-banner-info__subtitle"></div></div><div class="header-banner-arrow"><div class="header-banner-arrow__icon"><i class="fas fa-angle-down"></i></div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content content-home" id="content"><section class="postlist"><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2020/11/13/%E4%BD%BF%E7%94%A8PuTTY%E9%80%9A%E8%BF%87%E5%AF%86%E9%92%A5%E5%AF%B9%E4%BB%8EWindows%E8%BF%9E%E6%8E%A5%E5%88%B0Linux%E5%AE%9E%E4%BE%8B/">使用PuTTY通过密钥对从Windows连接到Linux实例</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2020-11-13</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2020-11-13</span></span></div></header><div class="post-body"><div class="post-excerpt"><p><strong>参考资料：</strong></p>
+<ol>
+<li><span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://docs.aws.amazon.com/zh_cn/AWSEC2/latest/UserGuide/putty.html">使用 PuTTY 从 Windows 连接到 Linux 实例</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></li>
+</ol>
+
+        <h2 id="使用-puttygen-转换私有密钥">
+          <a href="#使用-puttygen-转换私有密钥" class="heading-link"><i class="fas fa-link"></i></a>使用 PuTTYgen 转换私有密钥</h2>
+      
+<p>PuTTY 自身并不支持由 SSH 密钥的生成的私有密钥格式 (.pem)。PuTTY 提供一个名为 PuTTYgen 的工具，此工具可以将密钥转换为所需的 PuTTY 格式。您必须如下所示将私有密钥（.pem 文件）转换为此格式（.ppk 文件），以便使用 PuTTY 连接到您的实例。</p>
+<p><strong>转换您的私有密钥</strong></p>
+<ol>
+<li>从 <strong>Start (开始)</strong> 菜单中，依次选择 <strong>All Programs (所有程序)</strong> 、 <strong>PuTTY</strong> 、 <strong>PuTTYgen</strong>。</li>
+<li>在 <strong>Type of key to generate</strong> 下，选择 <strong>RSA</strong>。如果您使用的是旧版本的 PuTTYgen，请选择 <strong>SSH-2 RSA</strong>。</li>
+</ol>
+<img src="/2020/11/13/%E4%BD%BF%E7%94%A8PuTTY%E9%80%9A%E8%BF%87%E5%AF%86%E9%92%A5%E5%AF%B9%E4%BB%8EWindows%E8%BF%9E%E6%8E%A5%E5%88%B0Linux%E5%AE%9E%E4%BE%8B/puttygen-key-type.png" class title="none"> 
+<ol start="3">
+<li>选择 <strong>Load</strong>。默认情况下，PuTTYgen 仅显示扩展名为 <code>.ppk</code> 的文件。要找到您的 <code>.pem</code> 文件，请选择显示所有类型的文件的选项。</li>
+</ol>
+<img src="/2020/11/13/%E4%BD%BF%E7%94%A8PuTTY%E9%80%9A%E8%BF%87%E5%AF%86%E9%92%A5%E5%AF%B9%E4%BB%8EWindows%E8%BF%9E%E6%8E%A5%E5%88%B0Linux%E5%AE%9E%E4%BE%8B/puttygen-load-key.png" class title="none">
+<ol start="4">
+<li>
+<p>选择在启动实例时指定的密钥对的 <code>.pem</code> 文件，然后选择 <strong>Open (打开)</strong> 。PuTTYgen 会显示一个通知，指示已成功导入 <code>.pem</code> 文件。选择 <strong>OK</strong> 。</p>
+</li>
+<li>
+<p>要以 PuTTY 可使用的格式保存密钥，请选择<strong>保存私有密钥</strong>。PuTTYgen 将显示有关保存没有密码的密钥的警告。选择<strong>是</strong>。</p>
+</li>
+</ol>
+<hr>
+<p><strong>注意</strong></p>
+<p>私有密钥上的密码提供额外一层保护。即使发现了您的私有密钥，也不能在没有密码的情况下使用该密钥。使用密码的缺点是自动化更难实现，因为需要人工干预以登录到实例或将文件复制到实例中。</p>
+<hr>
+<ol start="6">
+<li>为密钥指定您用于密钥对的相同名称（例如 <code>my-key-pair</code>）并选择 <strong>Save (保存)</strong> 。PuTTY 会自动添加 <code>.ppk</code> 文件扩展名。</li>
+</ol>
+<p>您的私有密钥格式现在是正确的 PuTTY 使用格式了。您现在可以使用 PuTTY 的 SSH 客户端连接到实例。</p>
+<hr>
+<hr>
+
+        <h2 id="连接到-linux-实例">
+          <a href="#连接到-linux-实例" class="heading-link"><i class="fas fa-link"></i></a>连接到 Linux 实例</h2>
+      
+<p>通过以下过程使用 PuTTY 连接到您的 Linux 实例。您需要使用为私有密钥创建的 <code>.ppk</code> 文件。</p>
+<p><strong>使用 PuTTY 连接到您的实例</strong></p>
+<ol>
+<li>
+<p>启动 PuTTY（在<strong>开始</strong>菜单中，选择<strong>所有程序 &gt; PuTTY &gt; PuTTY</strong>）。</p>
+</li>
+<li>
+<p>在 <strong>Category</strong> 窗格中，选择 <strong>Session</strong> 并填写以下字段：</p>
+<p>a. 在<strong>主机名</strong>框中，执行以下操作之一：</p>
+<ul>
+<li>（公有 DNS）要使用实例的公有 DNS 名称进行连接，请输入 <code>my-instance-user-name</code>@<code>my-instance-public-dns-name</code>。</li>
+<li>(IPv6) 或者，如果实例具有 IPv6 地址，要使用实例的 IPv6 地址进行连接，请输入 <code>my-instance-user-name</code>@<code>my-instance-IPv6-address</code>。</li>
+<li><strong>其实IPv4地址登录就可以了</strong></li>
+</ul>
+<p>b. 确保<strong>端口</strong>值为 22。</p>
+<p>c. 在<strong>连接类型</strong>下，选择 <strong>SSH</strong>。</p>
+</li>
+</ol>
+<img src="/2020/11/13/%E4%BD%BF%E7%94%A8PuTTY%E9%80%9A%E8%BF%87%E5%AF%86%E9%92%A5%E5%AF%B9%E4%BB%8EWindows%E8%BF%9E%E6%8E%A5%E5%88%B0Linux%E5%AE%9E%E4%BE%8B/putty-session-config.png" class title="none"> 
+<ol start="3">
+<li>
+<p>(可选) 您可以配置 PuTTY 以定期自动发送“保持连接”数据以将会话保持活动状态。要避免由于会话处于不活动状态而与实例断开连接，这是非常有用的。在 <strong>Category</strong> 窗格中，选择 <strong>Connection</strong>，然后在 <strong>Seconds between keepalives</strong> 字段中输入所需的间隔。例如，如果您的会话在处于不活动状态 10 分钟后断开连接，请输入 180 以将 PuTTY 配置为每隔 3 分钟发送一次保持活动数据。</p>
+</li>
+<li>
+<p>在 <strong>Category</strong> 窗格中，展开 <strong>Connection</strong>，再展开 <strong>SSH</strong>，然后选择 <strong>Auth</strong>。完成以下操作：</p>
+<p>a. 选择 <strong>Browse</strong>。</p>
+<p>b. 选择为密钥对生成的 <code>.ppk</code> 文件，然后选择<strong>打开</strong>。</p>
+<p>c. (可选) 如果打算稍后重新启动此会话，则可以保存此会话信息以便日后使用。在<strong>类别</strong>下面，选择<strong>会话</strong>，在<strong>保存的会话</strong>中输入会话的名称，然后选择<strong>保存</strong>。</p>
+<p>d. 选择 <strong>Open</strong>。</p>
+</li>
+<li>
+<p>如果这是第一次连接到该实例，PuTTY 将显示安全警报对话框，以询问您是否信任要连接到的主机。选择<strong>是</strong>。将打开一个窗口，并且您连接到实例。</p>
+</li>
+</ol>
+<hr>
+<p><strong>注意</strong></p>
+<p>如果您在将私有密钥转换成 PuTTY 格式时指定了密码，当您登录到实例时，您必须提供该密码。</p>
+<hr>
+</div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2020/11/09/Ubuntu%2018.04%20%E5%AE%89%E8%A3%85%20Node.js/">Ubuntu 18.04 安装 Node.js</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2020-11-09</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2020-11-09</span></span></div></header><div class="post-body"><div class="post-excerpt"><p><strong>参考资料：</strong></p>
 <ol>
 <li><span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://mupceet.com/2020/02/the-best-way-to-install-nodejs/">Ubuntu 安装 Node.js 的正确姿势</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></li>
 </ol>
@@ -54,7 +133,7 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.2.0"></he
       
 <figure class="highlight sh"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装最新版本</span></span><br><span class="line">$ nvm install node</span><br><span class="line"><span class="comment"># 安装某一指定版本</span></span><br><span class="line">$ nvm install 12.14.1 <span class="comment"># or 10.10.0, 8.9.1, etc</span></span><br></pre></td></tr></table></div></figure>
 <p>查看所安装Node的版本 <code>node --version</code>：</p>
-<p><img src="/2020/11/09/Ubuntu%2018.04%20%E5%AE%89%E8%A3%85%20Node.js/001.png" class title="001}&lt;&#x2F;p&gt;"></p></div></div></article></section><nav class="paginator"><div class="paginator-inner"><a class="extend prev" rel="prev" href="/page/2/"><i class="fas fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span></div></nav></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><section class="sidebar-toc hide"></section><!-- ov = overview--><section class="sidebar-ov"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/assets/avatar/avatar.png" alt="avatar"></div></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="mailto:ly_liuyang19@qq.com" target="_blank" rel="noopener" data-popover="social.mail" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">Email</span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">21</div><div class="sidebar-ov-state-item__name">Archives</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">14</div><div class="sidebar-ov-state-item__name">Tags</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="Creative Commons" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2020</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>liuyang-70d12d</span></div><div><span>Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a></span><span> v5.2.0</span><span class="footer__devider">|</span><span>Theme - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.3.0</span></div><div class="busuanzi"><span class="busuanzi-siteuv"><span class="busuanzi-siteuv__icon"><i class="fas fa-user"></i></span><span class="busuanzi-siteuv__info">Visitors</span><span class="busuanzi-siteuv__value" id="busuanzi_value_site_uv"></span></span><span class="busuanzi-sitepv"><span class="busuanzi-siteuv__icon"><i class="fas fa-eye"></i></span><span class="busuanzi-siteuv__info">Views</span><span class="busuanzi-siteuv__value" id="busuanzi_value_site_pv"></span></span></div><div><span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span><script>var now = new Date();
+<p><img src="/2020/11/09/Ubuntu%2018.04%20%E5%AE%89%E8%A3%85%20Node.js/001.png" class title="001}&lt;&#x2F;p&gt;"></p></div></div></article></section><nav class="paginator"><div class="paginator-inner"><a class="extend prev" rel="prev" href="/page/2/"><i class="fas fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span></div></nav></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><section class="sidebar-toc hide"></section><!-- ov = overview--><section class="sidebar-ov"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/assets/avatar/avatar.png" alt="avatar"></div></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="mailto:ly_liuyang19@qq.com" target="_blank" rel="noopener" data-popover="social.mail" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">Email</span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">22</div><div class="sidebar-ov-state-item__name">Archives</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">14</div><div class="sidebar-ov-state-item__name">Tags</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="Creative Commons" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2020</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>liuyang-70d12d</span></div><div><span>Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a></span><span> v5.2.0</span><span class="footer__devider">|</span><span>Theme - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.3.0</span></div><div class="busuanzi"><span class="busuanzi-siteuv"><span class="busuanzi-siteuv__icon"><i class="fas fa-user"></i></span><span class="busuanzi-siteuv__info">Visitors</span><span class="busuanzi-siteuv__value" id="busuanzi_value_site_uv"></span></span><span class="busuanzi-sitepv"><span class="busuanzi-siteuv__icon"><i class="fas fa-eye"></i></span><span class="busuanzi-siteuv__info">Views</span><span class="busuanzi-siteuv__value" id="busuanzi_value_site_pv"></span></span></div><div><span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span><script>var now = new Date();
 function createtime() {
 var grt= new Date("11/09/2020 00:00:00");
 now.setTime(now.getTime()+250);
