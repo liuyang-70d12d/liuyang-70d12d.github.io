@@ -1,0 +1,81 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/assets/favicon/favicon_01/favicon-16x16.png?v=2.3.0" type="image/png" sizes="16x16"><link rel="icon" href="/assets/favicon/favicon_01/favicon-32x32.png?v=2.3.0" type="image/png" sizes="32x32"><meta name="description" content="Gradient Projection Memory for Continual Learning Anonymous ICLR 2021 Conference Blind Submission  [paper]                     Background        文章首先反思了神经网络为什么会出现“灾难性遗忘”，文章认为神经网络本质上就是把训练数据分布的信息编码到网络的参">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Paper Note: Gradient Projection Memory for Continual Learning">
+<meta property="og:url" content="https://hello-liuyang.com/2020/12/17/Paper-Note-Gradient-Projection-Memory-for-Continual-Learning/index.html">
+<meta property="og:site_name" content="Hello, Stranger">
+<meta property="og:description" content="Gradient Projection Memory for Continual Learning Anonymous ICLR 2021 Conference Blind Submission  [paper]                     Background        文章首先反思了神经网络为什么会出现“灾难性遗忘”，文章认为神经网络本质上就是把训练数据分布的信息编码到网络的参">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-12-17T07:24:32.000Z">
+<meta property="article:modified_time" content="2020-12-17T09:26:00.712Z">
+<meta property="article:author" content="liuyang-70d12d">
+<meta property="article:tag" content="Continual Learning">
+<meta name="twitter:card" content="summary"><title>Paper Note: Gradient Projection Memory for Continual Learning | Hello, Stranger</title><link ref="canonical" href="https://hello-liuyang.com/2020/12/17/Paper-Note-Gradient-Projection-Memory-for-Continual-Learning/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.3.0"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  assistSearch: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":6},
+  header: {"enable":true,"showOnPost":false,"scrollDownIcon":true},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"light","wordWrap":false},
+  reward: false,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"Copy","copySuccess":"Copy Success","copyError":"Copy Error"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.2.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner header-inner--height header-inner--bgcolor"><nav class="header-nav header-nav--sticky"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">Home</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">Archives</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">Tags</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">Paper Note: Gradient Projection Memory for Continual Learning</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2020-12-17</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2020-12-17</span></span><span class="post-meta-item post-meta-item--visitors"><span class="post-meta-item__icon"><i class="fas fa-eye"></i></span><span class="post-meta-item__info">Visited</span><span class="post-meta-item__value" id="busuanzi_value_page_pv"></span></span></div></header><div class="post-body"><p><font face="Adobe Caslon Pro"><strong>Gradient Projection Memory for Continual Learning</strong></font></p>
+<p><font face="Adobe Caslon Pro"><em>Anonymous</em></font></p>
+<p><font face="Adobe Caslon Pro"><em>ICLR 2021 Conference Blind Submission</em> </font></p>
+<p><font face="Adobe Caslon Pro">[<span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://openreview.net/forum?id=3AOj0RCNC2">paper</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>]</font></p>
+
+        <h2 id="font-faceadobe-caslon-probackgroundfont">
+          <a href="#font-faceadobe-caslon-probackgroundfont" class="heading-link"><i class="fas fa-link"></i></a>Background</h2>
+      
+<p><font face="Adobe Caslon Pro">文章首先反思了神经网络为什么会出现“灾难性遗忘”，文章认为神经网络本质上就是把训练数据分布的信息编码到网络的参数化的表示当中。当遇到新的任务时，基于梯度的优化方法，由于没有任何限制，就会根据当前的数据分布改变了已经习得的编码，以此来最小化目标函数。这样的参数更新方式导致了“遗忘”。</font></p>
+
+        <h2 id="font-faceadobe-caslon-prorelated-workfont">
+          <a href="#font-faceadobe-caslon-prorelated-workfont" class="heading-link"><i class="fas fa-link"></i></a>Related Work</h2>
+      
+<p><font face="Adobe Caslon Pro">这篇工作是顺着GEM、A-GEM这条线做的，这条线上的工作还包括：GEM (Lopez-Paz &amp; Ranzato, 2017)、Zeng et al. (2018)、A-GEM (Chaudhry et al., 2019a)、Chaudhry et al. (2019b)、Farajtabar et al. (2020)。文章认为之前的工作要么保留原始数据，存在隐私泄露的风险，要么资源利用率不高，可扩展性不强，所以提出了这篇工作。</font></p>
+<p><font face="Adobe Caslon Pro">文章将持续学习的方法分为了三个类别：</font></p>
+<p><strong>Expansion-based methods:</strong></p>
+<p><font face="Adobe Caslon Pro"></font></p>
+<p><font face="Adobe Caslon Pro"></font></p>
+
+        <h2 id="font-faceadobe-caslon-promain-ideafont">
+          <a href="#font-faceadobe-caslon-promain-ideafont" class="heading-link"><i class="fas fa-link"></i></a>Main Idea</h2>
+      
+<p>正如在 Related Work 中所提到的，本文提出的解决“灾难性遗忘”问题的方法也是对梯度方向施加了显性的限制，但不同于此前的方法，本方法既不需要存储旧的数据也不需要存储旧的梯度方向。该方法是，在学习完每一个任务之后，将整个权重的梯度空间划分为两个子空间：Core Gradient Space (CGS) 和 Residual Gradient Space (RGS)。</p>
+<p>利用输入空间和梯度空间之间的关系，我们展示了习得的表征（activations）如何构成了全连接网络和卷积网络中这些梯度子空间的基础。在这些 activations 上使用奇异值分解（SVD），我们展示了如何获取CGS的最小基础集，通过该基础集可以保留过去的知识并确保新任务的可学习性。我们将这些&quot;基&quot;存储在定义为“梯度投影内存（GPM）”的内存中。在我们的方法中，我们建议通过在与GPM跨越的空间（CGS）正交的方向上采取梯度步骤来学习任何新任务。我们的分析表明，这样的正交梯度体面对旧学习的影响很小，甚至没有干扰，因此可以有效地减轻灾难性遗忘。我们使用miniImageNet，CIFAR-100，PMNIST以及在包括ResNet在内的各种网络架构上的5数据集序列对图像分类的上下文中评估我们的方法。我们将我们的方法与相关的最新方法进行了比较，并报告了可比或更好的分类性能。总体而言，我们证明了我们的方法具有内存高效性，并且可以扩展到具有更长任务序列的复杂数据集，同时又可以保护数据隐私。</p>
+<p><font face="Adobe Caslon Pro"></font></p>
+<p><font face="Adobe Caslon Pro"></font></p>
+<p><font face="Adobe Caslon Pro"></font></p>
+<p><font face="Adobe Caslon Pro"></font></p>
+<p><font face="Adobe Caslon Pro"></font></p>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ END ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">Author: </span><span class="copyright-author__value"><a href="https://hello-liuyang.com">liuyang-70d12d</a></span></div><div class="copyright-link"><span class="copyright-link__name">Link: </span><span class="copyright-link__value"><a href="https://hello-liuyang.com/2020/12/17/Paper-Note-Gradient-Projection-Memory-for-Continual-Learning/">https://hello-liuyang.com/2020/12/17/Paper-Note-Gradient-Projection-Memory-for-Continual-Learning/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">Copyright: </span><span class="copyright-notice__value">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> unless stating additionally</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://hello-liuyang.com/tags/Continual-Learning/">Continual Learning</a></span></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2020/12/17/Paper-Note-Progressive-Neural-Networks/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">Paper Note: Progressive Neural Networks</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2020/12/16/Paper-Note-Overcoming-Catastrophic-Forgetting-by-Incremental-Moment-Matching/"><span class="paginator-prev__text">Paper Note: Overcoming Catastrophic Forgetting by Incremental Moment Matching</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">Catalog</span><span class="sidebar-nav-ov">Overview</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#font-faceadobe-caslon-probackgroundfont"><span class="toc-number">1.</span> <span class="toc-text">
+          Background</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#font-faceadobe-caslon-prorelated-workfont"><span class="toc-number">2.</span> <span class="toc-text">
+          Related Work</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#font-faceadobe-caslon-promain-ideafont"><span class="toc-number">3.</span> <span class="toc-text">
+          Main Idea</span></a></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/assets/avatar/avatar.png" alt="avatar"></div></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="mailto:ly_liuyang19@qq.com" target="_blank" rel="noopener" data-popover="social.mail" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">Email</span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">31</div><div class="sidebar-ov-state-item__name">Archives</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">14</div><div class="sidebar-ov-state-item__name">Tags</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="Creative Commons" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">You have read </span><span class="sidebar-reading-info__num">0</span><span class="sidebar-reading-info__perc">%</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2020</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>liuyang-70d12d</span></div><div><span>Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a></span><span> v5.2.0</span><span class="footer__devider">|</span><span>Theme - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.3.0</span></div><div class="busuanzi"><span class="busuanzi-siteuv"><span class="busuanzi-siteuv__icon"><i class="fas fa-user"></i></span><span class="busuanzi-siteuv__info">Visitors</span><span class="busuanzi-siteuv__value" id="busuanzi_value_site_uv"></span></span><span class="busuanzi-sitepv"><span class="busuanzi-siteuv__icon"><i class="fas fa-eye"></i></span><span class="busuanzi-siteuv__info">Views</span><span class="busuanzi-siteuv__value" id="busuanzi_value_site_pv"></span></span></div><div><span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span><script>var now = new Date();
+function createtime() {
+var grt= new Date("11/09/2020 00:00:00");
+now.setTime(now.getTime()+250);
+days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+document.getElementById("timeDate").innerHTML = "我已来到这个世界 "+dnum+" 天 ";
+document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+}
+setInterval("createtime()",250);</script></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><link href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css" rel="stylesheet" type="text/css"><link href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/copy-tex.css" rel="stylesheet" type="text/css"><script src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/copy-tex.min.js"></script><script src="https://cdn.jsdelivr.net/gh/sukkaw/busuanzi@latest/bsz.pure.mini.js" async></script><script src="/js/utils.js?v=2.3.0"></script><script src="/js/stun-boot.js?v=2.3.0"></script><script src="/js/scroll.js?v=2.3.0"></script><script src="/js/header.js?v=2.3.0"></script><script src="/js/sidebar.js?v=2.3.0"></script></body></html>
