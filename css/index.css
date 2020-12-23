@@ -623,7 +623,7 @@ body::after {
   position: fixed;
   height: 100vh;
   z-index: -2;
-  background: url("/assets/bg_image/fanfan_photo_04.jpg") no-repeat center/cover;
+  background: url("/assets/bg_image/fanfan_photo_05.jpg") no-repeat center/cover;
 }
 body::before {
   content: '';
