@@ -2614,12 +2614,12 @@ body::before {
   content: '|';
   margin: 0 10px;
 }
-@media (min-width: 960px) {
+@media (min-width: 1010px) {
   .header-nav-inner {
-    width: 960px;
+    width: 1010px;
   }
   .main-inner {
-    width: 960px;
+    width: 1010px;
   }
 }
 @media (min-width: 991.98px) {
